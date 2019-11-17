@@ -1,0 +1,52 @@
+
+
+
+
+
+html
+{
+  font-size: 1rem;
+}
+body 
+{
+  background-color: #212529;
+}
+form {
+  padding: 1rem;
+ 
+  border-radius: 6px;
+}
+
+.btn-spn
+{
+}
+.btn-spn-input
+{
+  border-bottom: white;
+}
+.btn-spn-sm
+{
+  width:90px;
+}
+.btn-spn-md
+{
+  width:90px;
+}
+.btn-spn-lg 
+{
+  width:90px;
+}
+.btn-spn-xl
+{
+  width:90px;
+}
+
+#first_row
+{
+
+}
+#second_block
+{
+	margin-top: 50px;
+}
+

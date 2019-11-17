@@ -1,0 +1,387 @@
+<!doctype html>
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<html>
+	<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Редактирование тура</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{% static 'forinput.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'footer.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'normolize.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'paginator3.css' %}" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'multi6.min.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'multi6.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'adm_tour_card_style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'adm_PlaceCard_style.css' %}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'multi6.min.css' %}">
+    <script src="{% static 'js/mmulti.min.js' %}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+    <style media="screen">
+
+    </style>
+
+<style>
+.form-control
+{
+  max-width:600px;
+}
+.col
+{
+  margin-right: 0px;
+  padding-right: 0px;
+}
+.row
+{
+  margin: 0px;
+}
+
+
+
+</style>
+
+  <link rel="stylesheet" href="{% static 'adm-header-style1.css' %}" type="text/css">
+	</head>
+	<body>
+		<header>
+			<nav id = "list" class="navbar navbar-expand-lg navbar-dark " style = "background-color: rgba(37, 115, 187, 0.9); display:flex; flex-direction: column;">
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon navbar-light"></span>
+				</button>
+
+
+				<div class="collapse navbar-collapse" id="navbar1" >
+					<ul  class="navbar-nav  ml-auto" style = "display:flex; flex-direction: column;">
+						<div class = "menuPart"style = "display: flex;  ">
+						<li id = "el"  class="nav-item"><a class="nav-link"  style = "color: white;" href="{% url 'bookingsList' %}">Бронирования</a></li>
+
+							<li id = "el" class="nav-item"><a class="nav-link"  style = "color: white;" href="{% url 'userList'%}">Пользователи</a></li>
+							<li id = "el"  class="nav-item"><a class="nav-link"  style = "color: white;" href="{% url 'getTours' %}">Туры</a></li>
+							<li id = "el"  class="nav-item"><a class="nav-link"  style = "color: white;" href="{% url 'getHotels' %}">Гостиницы</a></li>
+							<li id = "el"  class="nav-item"><a class="nav-link"  style = "color: white;" href="{% url 'getPlaces' %}">Места</a></li>
+							<li id = "el" class="nav-item"><a class="nav-link"  style = "color: white;" href="{% url 'timetableList' %}">Расписание</a></li>
+						</div>
+					</ul>
+
+				</div>
+			</nav>
+		</header>
+
+
+		<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Административная панель </a></li>
+<li class="breadcrumb-item"><a href="#">Туры </a></li>
+    <li class="breadcrumb-item active" aria-current="page">Редактирование тура</li>
+  </ol>
+</nav>
+    <div class = "auth_bar" style="margin-left:90%;">
+	{{user.username}} | <a id = "out" href = "{% url 'log_out' %}">Выйти</a>
+	</div>
+
+
+
+		<hr style = "height: 1 px; width: 300px; background-color:#6666ff">
+			<h2 style = "text-align: center;">Редактирование тура</h2>
+
+
+
+
+		<div class = "container" id = "cont_card" style = "max-width: 750px; border: 1px solid black;" >
+
+
+
+
+
+              <form method="POST" enctype="multipart/form-data" action="{% url 'editTour1' tour.url %}" id = "contactForm2" class="post-form">{% csrf_token %}
+                  {{ form | crispy}}
+                  <div class = "row mt-3">
+<div class = "col-sm-3 mb-3"></div>
+ <div class = "col-sm-6 mb-3">
+<a class="btn btn-outline-dark  popup-open"  >Удалить</a>
+<a type="button" class="btn btn-secondary" href = "{% url 'tourCard' tour.url %}">Отменить </a>
+
+ <button class="btn btn-primary  " type="submit">Сохранить</button>
+ </div>
+<div class = "col-lg-4 col-md-4  "></div>
+</div>
+
+
+      </form>
+
+
+
+
+
+				</div>
+
+
+
+
+
+        <div class="popup-fade">
+            <div class="popup">
+
+        				<p>Вы уверены что хотите удалить тур?</p>
+        				<a class="btn btn-outline-dark"  href = "{% url 'del_tour' tour.id %}">Удалить</a>
+        				<a type="button" class="btn btn-secondary popup-close" href = "">Отменить </a>
+
+
+            </div>
+        </div>
+
+        <style>
+        .popup-fade {
+            display: none;
+        }
+        .popup-fade:before {
+            content: '';
+            background: #000;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.7;
+            z-index: 9999;
+        }
+        .popup {
+            position: fixed;
+        		display: flex;
+        		flex-direction: column;
+        		justify-content: space-between;
+        		height: 160px;
+            top: 20%;
+            left: 50%;
+            padding: 20px;
+            width: 360px;
+            margin-left: -200px;
+            background: #fff;
+        	    border: 1px solid black;
+            border-radius: 2px;
+            z-index: 99999;
+            opacity: 1;
+        }
+
+        </style>
+
+        <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function($) {
+            $('.popup-open').click(function() {
+                $('.popup-fade').fadeIn();
+                return false;
+            });
+
+            $('.popup-close').click(function() {
+                $(this).parents('.popup-fade').fadeOut();
+                return false;
+            });
+
+            $(document).keydown(function(e) {
+                if (e.keyCode === 27) {
+                    e.stopPropagation();
+                    $('.popup-fade').fadeOut();
+                }
+            });
+
+            $('.popup-fade').click(function(e) {
+                if ($(e.target).closest('.popup').length == 0) {
+                    $(this).fadeOut();
+                }
+            });
+        });
+        </script>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  $( document ).ready(function() {
+		var elem = document.getElementsByName('url');
+    var url = elem[0];
+		url.setAttribute("value", "{{tour.url}}");
+    var elem = document.getElementsByName('name');
+    var name = elem[0];
+    name.setAttribute("value", "{{tour.name}}");
+    elem =  document.getElementsByName('description');
+    var descr = elem[0];
+    descr.innerHTML = "{{tour.description}}";
+    elem =  document.getElementsByName('number_of_days');
+    var nums = elem[0];
+    nums.setAttribute("value", "{{tour.number_of_days}}");
+    elem =  document.getElementsByName('min_price');
+    var price = elem[0];
+    price.setAttribute("value", "{{tour.min_price}}");
+    elem = document.getElementsByName('preview_descr');
+    var preview_descr = elem[0];
+    preview_descr.innerHTML = "{{tour.preview_descr}}";
+
+    var p = document.getElementById("id_places");
+    p.setAttribute("required",false);
+    p.removeAttribute("required");
+ p = document.getElementById("id_slider");
+    p.setAttribute("required",false);
+    p.removeAttribute("required");
+console.log(p);
+
+
+    var stat = "{{tour.activity_status}}";
+      console.log(stat);
+  if (stat == "True")
+  {
+    var elems = document.getElementsByName('activity_status');
+    var activity = elems[0];
+    activity.setAttribute("checked", "checked");
+  }
+
+  stat = "{{tour.show_on_main_status}}";
+  if (stat == "True")
+  {
+    var elems = document.getElementsByName('show_on_main_status');
+    var activity = elems[0];
+    activity.setAttribute("checked", "checked");
+  }
+
+elem =  document.getElementById('div_id_places');
+elem.style.display = 'none';
+elem =  document.getElementById('div_id_slider');
+elem.style.display = 'none';
+elem =  document.getElementById('div_id_preview_img');
+elem.style.display = 'none';
+});
+
+</script>
+
+
+<script type="text/javascript">
+  $( document ).ready(function() {
+
+ var el_price = document.getElementById('div_id_min_price');
+ var current_html = el_price.outerHTML;
+ var new_html = current_html + '{% if tour.places.all  %}Текущие направления: <ul>{% for p in tour.places.all %}<li>{{p.name}}</li>{%endfor%}</ul>{%endif%}	<input type="checkbox" name="show_Places" onchange = "showPlaces()" > Изменить направления ';
+ el_price.innerHTML = new_html;
+
+var el_descr = document.getElementById('div_id_description');
+current_html = el_descr.outerHTML;
+new_html = current_html + '{% if tour.slider.all  %}Текущие изображения слайдера: <ul>{% for p in tour.slider.all %}<li>{{p.name}}</li>{%endfor%}</ul>{%endif%}	<input type="checkbox" name="show_Slider" onchange = "showSlider()" > Изменить слайдер</input> <br>	 ';
+ el_descr.innerHTML = new_html;
+
+var el_descr_p = document.getElementById('div_id_preview_descr');
+current_html = el_descr_p.outerHTML;
+new_html = current_html + '{% if tour.preview_img %} Текущие изображение: {{tour.preview_img}} <img src = "{{tour.preview_img.url}}" style ="width: 80px; height: 80px; margin-bottom: 15px;"> <br>  {% endif %}	<input type="checkbox" name="show_Img" onchange = "showImg()" > Изменить изображение</input> <br>	 ';
+ el_descr_p.innerHTML = new_html;
+});
+function showPlaces() {
+  if(document.getElementById('div_id_places').style.display=='none') {
+    document.getElementById('div_id_places').style.display = '';
+  } else {
+    document.getElementById('div_id_places').style.display = 'none';
+  }
+  return false;
+}
+
+function showSlider() {
+  if(document.getElementById('div_id_slider').style.display=='none') {
+    document.getElementById('div_id_slider').style.display = '';
+  } else {
+    document.getElementById('div_id_slider').style.display = 'none';
+  }
+  return false;
+}
+
+function showImg() {
+  if(document.getElementById('div_id_preview_img').style.display=='none') {
+    document.getElementById('div_id_preview_img').style.display = '';
+  } else {
+    document.getElementById('div_id_preview_img').style.display = 'none';
+  }
+  return false;
+}
+
+</script>
+
+		<script>
+
+addEventListenerAll('.btn-spn-up', 'click', event => this.spinUp(event))
+addEventListenerAll('.btn-spn-down', 'click', event => this.spinDown(event))
+
+function spinUp(event) {
+  var spinRoot = event.currentTarget.parentElement.parentElement  // .btn-spn
+  var spinInput = spinRoot.children[1]
+  if (!spinInput.value || spinInput.value==="" || isNaN(parseInt(spinInput.value)))
+    spinInput.value = 0
+  var spinValue = parseInt(spinInput.value)
+
+  var max = spinInput.getAttribute('max')
+  if (!max || spinValue < max)
+    spinInput.value = spinValue+1
+  else if (max && spinValue > max)
+    spinInput.value = max
+}
+
+function spinDown(event) {
+  var spinRoot = event.currentTarget.parentElement.parentElement  // .btn-spn
+  var spinInput = spinRoot.children[1]
+  if (!spinInput.value || spinInput.value==="" || isNaN(parseInt(spinInput.value)))
+    spinInput.value = 0
+  var spinValue = parseInt(spinInput.value)
+
+  var min = spinInput.getAttribute('min')
+  if (!min || spinValue > min)
+    spinInput.value = spinValue-1
+  else if (min && spinValue < min)
+    spinInput.value = min
+}
+
+function addEventListenerAll(selector, eventName, eventHandler) {
+  var elements = document.querySelectorAll(selector)
+  for(var i = 0; i<elements.length; i++) {
+      elements[i].addEventListener(eventName, eventHandler)
+  }
+}</script>
+
+
+			</div>
+      <script type="text/javascript" src=" {% static 'js/jquery-3.3.1.min.js' %} "></script>
+  		<script type="text/javascript" src=" {% static 'js/popper.js' %} "></script>
+  		<script type="text/javascript" src=" {% static 'js/bootstrap.js' %} "></script>
+			<script type="text/javascript" src=" {% static 'js/mmulti.min.js' %} "></script>
+
+
+      <script type='text/javascript'>
+             var select = document.getElementById("id_places");
+             multi(select, {
+                 non_selected_header: "Направления тура",
+                 selected_header: "Выбранное"
+             });
+         </script>
+
+
+          <script type='text/javascript'>
+                 var select = document.getElementById("id_slider");
+                 multi(select, {
+                     non_selected_header: "Изображение",
+                     selected_header: "Выбранное"
+                 });
+             </script>
+
+
+
+
+	</body>
+</html>

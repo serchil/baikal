@@ -1,0 +1,144 @@
+<div class = "wrapp" >
+    <!-- <div class = "container2" id = "cont_card" style = "max-width: 450px; border: 1px solid black;background-color:#f5f5f5; " >
+    <div class = "row">
+
+      <div class = "col-md-12 p-4" ><form>
+
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        <input type="checkbox" name="option2" class = "check" value="a2">
+        <div class = "row ">
+
+
+
+          <div class = "col-sm-7"><label for="name">Клиент: Иванов И.И.</label></div>
+
+
+        </div>
+        <div class = "row ">
+
+          <div class = "col-sm-8"><label for="name">Тур в расписании: Хрустальный Байкал 12.12.12</label></div>
+
+
+        </div>
+
+        <div class = "row ">
+
+          <div class = "col-sm-7"><label for="name">Количество доп гостей: 2</label></div>
+
+
+        </div>
+        <div class = "row ">
+
+
+
+          <div class = "col-sm-7"><label for="name">Общая стоимость: 7997 р</label></div>
+
+
+        </div>
+        <div class = "row mt-1">
+
+
+
+          <div class = "col-sm-7"><label for="name">Дата бронирования: 12.13.12</label></div>
+
+
+        </div>
+      </div>
+      </div>
+    </div>
+  <div class = "container2" id = "cont_card" style = "max-width: 450px; border: 1px solid black;background-color:#f5f5f5; " >
+    <div class = "row">
+
+      <div class = "col-md-12 p-4" ><form>
+
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        <input type="checkbox" name="option2" class = "check" value="a2">
+        <div class = "row ">
+
+
+
+          <div class = "col-sm-7"><label for="name">Клиент: Иванов И.И.</label></div>
+
+
+        </div>
+        <div class = "row ">
+
+          <div class = "col-sm-8"><label for="name">Тур в расписании: Хрустальный Байкал 12.12.12</label></div>
+
+
+        </div>
+
+        <div class = "row ">
+
+          <div class = "col-sm-7"><label for="name">Количество доп гостей: 2</label></div>
+
+
+        </div>
+        <div class = "row ">
+
+
+
+          <div class = "col-sm-7"><label for="name">Общая стоимость: 7997 р</label></div>
+
+
+        </div>
+        <div class = "row mt-1">
+
+
+
+          <div class = "col-sm-7"><label for="name">Дата бронирования: 12.13.12</label></div>
+
+
+        </div>
+      </div>
+      </div>
+    </div>
+
+<div class = "container2" id = "cont_card" style = "max-width: 450px; border: 1px solid black;background-color:#f5f5f5; " >
+    <div class = "row">
+
+      <div class = "col-md-12 p-4" ><form>
+
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        <input type="checkbox" name="option2" class = "check" value="a2">
+        <div class = "row ">
+
+
+
+          <div class = "col-sm-7"><label for="name">Клиент: Иванов И.И.</label></div>
+
+
+        </div>
+        <div class = "row ">
+
+          <div class = "col-sm-8"><label for="name">Тур в расписании: Хрустальный Байкал 12.12.12</label></div>
+
+
+        </div>
+
+        <div class = "row ">
+
+          <div class = "col-sm-7"><label for="name">Количество доп гостей: 2</label></div>
+
+
+        </div>
+        <div class = "row ">
+
+
+
+          <div class = "col-sm-7"><label for="name">Общая стоимость: 7997 р</label></div>
+
+
+        </div>
+        <div class = "row mt-1">
+
+
+
+          <div class = "col-sm-7"><label for="name">Дата бронирования: 12.13.12</label></div>
+
+
+        </div>
+      </div>
+      </div>
+    </div> -->
+  </div>

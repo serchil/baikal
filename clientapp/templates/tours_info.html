@@ -1,0 +1,329 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+	<head>
+
+		<link rel="stylesheet" href="{% static 'bootstrap.css' %}" type="text/css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'fixed.css' %}" type="text/css">
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="{% static 'auth_bar2.css' %}" type="text/css">
+
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport" />
+		<script src="https://vk.com/js/api/openapi.js?160" type="text/javascript"></script>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<title>о. Ольхон</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+		<link rel="stylesheet" href="{% static 'tourCard_styles.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% static 'tours_info_styles.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% static 'footer.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% static 'normolize.css' %}" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'forinput.css' %}" type="text/css">
+
+
+<script>
+jQuery(document).ready(function () {
+document.getElementsByClassName('info')[0].style.display = 'none';
+document.getElementById("nextButton").style.display = 'none';
+});
+
+var current = 27;
+</script>
+
+
+		<script>
+
+		function toggleColor() {
+
+var id = event.target.id;
+console.log(id);
+ var myButtonClasses = document.getElementById(id).classList;
+
+ if (myButtonClasses.contains("active")) {
+
+    myButtonClasses.remove("active");
+		document.getElementsByClassName('info')[0].style.display = 'none';
+		document.getElementsByClassName('chooseDate')[0].style.display = '';
+		document.getElementById("nextButton").style.display = 'none';
+ } else {
+
+var elems = document.querySelectorAll('.date_block');
+for (var i = 0; i < elems.length; i++) {
+	console.log(elems[i].id);
+	elems[i].classList.remove("active");
+	}
+  current = id;
+	  myButtonClasses.add("active");
+		document.getElementsByClassName('info')[0].style.display = '';
+		document.getElementsByClassName('chooseDate')[0].style.display = 'none';
+		var elemm = document.getElementById("nextButton");
+
+		elemm.style.display = '';
+ }
+
+
+{%for t in tour_in_timetable%}
+if ("{{t.id}}" == current)
+{var elem = document.getElementById("nextButton");
+	var newAttr = "{% url 'booking_tour_page' t.id %}";
+	elem.setAttribute('href', newAttr );
+  console.log("sss");
+  document.getElementById("cost").innerHTML = "{{t.price}}";
+  document.getElementById("dateStart").innerHTML = "{{t.date | date:"d M Y"}}";
+  var hotels_str = ""
+  // {% if t.hotels.all %}{% for h in t.hotels.all %}  hotels_str += "<a href = '{% url 'hotelCard' h.id %}'> {{h.name}}, " ; {% endfor %}   hotels_str = hotels_str.substring(0, hotels_str.length-2);{% else %} hotels_str = "не указано";{% endif %}
+  // document.getElementById("hotels").innerHTML = hotels_str;
+
+  document.getElementById("number_of_days").innerHTML = "{{tour.number_of_days}}";
+
+
+	var i = 0;
+	var counter=0;
+	var len=0;
+	var str="";
+	var capacity = {{t.capacity}};
+	{% for b in bookings %}
+
+{% if b.tourInT.id == t.id %}
+var m = {{b.number_of_people}};
+i = i+m;
+	console.log("D");
+{% endif %}
+counter = {{forloop.counter}};
+console.log(counter);
+len = {{bookings|length}};
+str = "freeSpace";
+
+console.log(counter==len);
+if (counter==len)
+{
+document.getElementById("freeSpace").innerHTML = {{t.capacity}}-i;
+
+}
+
+
+					{% endfor %}
+
+
+}
+{% endfor %}
+
+
+
+
+
+
+}
+
+
+
+
+
+		</script>
+
+
+
+
+
+
+
+	</head>
+	<body> <style>.fa:hover{cursor: pointer;}</style>
+    <header style = "height: auto;">
+			<nav id = "menu11" class="navbar navbar-expand-lg navbar-dark ">
+				<a class="navbar-brand" href="#" style = "width:170px;">
+					<img src="{% static "images/logotype.png" %}" alt="Logo" style=" height: 80px;">
+				</a>
+				<div  id = "conts" class = "header_contacts " >
+					<div class = "phone1_num">
+						<i class="fa fa-phone" aria-hidden="true"></i>  8&nbsp;(999)&nbsp;777&nbsp;-&nbsp;83&nbsp;-&nbsp;00
+					</div>
+					<div class = "loc" >
+						<i class="fa fa-map-marker" aria-hidden="true" ></i>г.&nbsp;Иркутск,&nbsp;ул.&nbsp;Лермонтова,&nbsp;дом&nbsp;3
+					</div>
+				</div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon navbar-light"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbar1" >
+					<ul class="navbar-nav  ml-auto" style = "font-size: 18px; height: auto;">
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'index' %}">Главная <span class="sr-only">(current)</span></a></li>
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'rest' %}">Отдых&nbsp;на&nbsp;Байкале</a></li>
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'getArticles' %}">Блог</a></li>
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'getTeam' %}">О&nbsp;нас</a></li>
+						<li class="nav-item" id = "last" ><a class="nav-link"  style = "color: white;" href="{% url 'contacts' %}">Контакты</a></li>
+            <li class=" auth" >	<a class = "username" href="{% url 'personal_account_show' %}"> {% if user.username %}{{user.username}} </a> |  <a class = "out" href = "{% url 'log_out' %}">Выйти</a>{% else %} <a class= "out" href = "{% url 'go_auth' %}">Вход</a> | <a  class= "out" href = "{% url 'registr' %}">Регистрация</a>{%endif%} {%if user.is_staff == True%}|  <a class= "out" href = "{% url 'bookingsList' %}" > В&nbsp;админку</a>{%endif%}  </li>
+
+				</div>
+			</nav>
+		</header>
+
+
+	<div class = "backgr">
+
+		Информация о туре
+	</div>
+
+
+
+
+	<div class = "main">
+		<div class = "middle">
+
+			<ul id="breadcrumbs-one">
+				<li><a href="{% url 'index' %}">Главная</a></li>
+				<li class = "arrow">></li>
+				<li><a href="{% url 'getTours' %}">Туры на Байкал</a></li>
+				<li class = "arrow">></li>
+				<li><a href="{% url 'tourCard' tour.url %}">Тур "Хрустальный Байкал"</a></li>
+				<li class = "arrow">></li>
+				<li><a href="">Информация о туре</a></li>
+
+			</ul>
+
+		</div>
+		<div class="section_title">
+		<hr style = "height: 1 px; width: 300px; background-color:#6666ff">
+			<h2>Тур Хрустальный Байкал</h2>
+		</div>
+		<div class = "attention">
+			<span style = "color: black; font-size: 20px;"> Ознакомьтесь с ближайшими датами тура и выберите наиболее подходящую для Вас.</span><br><span style = "color: black; font-size: 20px;"> Обратите внимание, что в зависимости от даты, условия проведения тура могут изменяться.</span>
+		</div>
+
+    <div class = "dates">
+{% for t in tour_in_timetable %}
+<div class = "date_block" id = "{{t.id}}" onclick="toggleColor()">  </div>
+<script type="text/javascript">
+  var st = "{{t.date}}";
+  st = st.substring(4);
+  var el = document.getElementById("{{t.id}}");
+  var arr = st.split(" ");
+  arr = arr.reverse();
+
+el.innerHTML = arr[0]+" "+arr[1];
+
+</script>
+
+
+
+
+{% endfor %}
+
+            </div>
+
+
+
+
+
+
+
+
+		<div class = "conditions">
+
+
+			<div class = "info">
+
+				<div class = "price"><span><i class="fa fa-money" aria-hidden="true" style = "font-size: 25px;"></i></span> Стоимость тура (на одного человека): <span id = "cost"> </span></div>
+				<div class = "datesOnfo"><span><i class="fa fa-calendar" aria-hidden="true"></i></span>  <span class = "heading"> Дата начала тура: <span id = "dateStart"> 12.12.12</span> </span></br>
+					<span class = "heading"> <span><i class="fa fa-calendar" aria-hidden="true"></i> Количество дней: <span id = "number_of_days"> 12</span> </span>       </div>
+					<div class = "more_info"> <span class = "heading"> <span><i class="fa fa-list-ol" aria-hidden="true"></i></span> Количество свободных мест: <span id = "freeSpace" 14</span></br> </span>
+</div>
+
+
+				</div>
+<div class = "chooseDate">Пожалуйста, выберите дату</div>
+			</div>
+			<a id = "nextButton" href = "#" class = "more_button">Перейти к бронированию</a>
+
+
+
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer>
+		<div class = "footer_main_cont">
+		<div class = "footer_first_con">
+
+		<div class = "footer_contacts">
+
+		<p>тел.:8&nbsp;(999)&nbsp;777&nbsp;-&nbsp;83&nbsp;-&nbsp;00</p>
+		<p>г.&nbspИркутск, ул.&nbspЛермонтова, дом&nbsp3</p>
+		<p>E-mail: qqqq@mail.ru</p>
+		</div>
+
+		<div class = "footer_nav">
+		<nav class = "nav_class">
+
+
+		<a href="{% url 'getTours' %}">Туры</a> <a href="{% url 'getPlaces' %}">Направления</a> <a href="{% url 'getHotels' %}">Проживание</a> <a href="{% url 'transfer' %}">Трансфер</a><a href="{% url 'getArticles' %}">Блог</a><a href="{% url 'getTeam' %}">О&nbspнас</a><a href="{% url 'contacts' %}">Контакты</a>
+
+
+		</nav>
+		</div>
+
+		<div class = "footer_social">
+
+		<div class = "footer_social_icons">
+		<div class = "icons_h">Мы в соц сетях: </div>
+		<div class = "iconsSoc">
+		<img src="{% static "images/vk.png" %}">
+		<img src="{% static "images/inst.png" %}">
+		<img src="{% static "images/facebook.png" %}">
+		</div>
+		</div>
+		<!--
+		<div class = "footer_logo">
+		<img id="footer_logo" src="http://demiart.ru/forum/uploads7/post-802773-1311062308.png" >
+		</div>
+		-->
+		</div>
+
+
+		</div>
+
+
+
+		<div class = "footer_sec_con">
+		<p>Агентство путешествий Resort </p>
+		</div>
+
+
+
+
+
+		</div>
+
+		</footer>
+
+
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script type="text/javascript" src=" {% static 'js/jquery-ui.min.js' %} "></script>
+<link rel="stylesheet" href="   {% static 'jquery-ui.min.css' %} ">
+
+
+
+
+		</body>
+	</html>

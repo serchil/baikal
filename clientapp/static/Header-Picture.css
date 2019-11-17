@@ -1,0 +1,99 @@
+#navigation-purple {
+    padding-bottom: 0px;
+    margin: 0;
+		background-color: rgba(37, 115, 187, 0.9);
+		font-family: 'Open Sans Condensed', sans-serif;
+    border: none;
+    border-radius: 0;
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+}
+
+#navigation-purple .nav {
+    margin-left: -15px;
+	margin-top:19px;
+}
+
+#navigation-purple .nav > li {
+    border-bottom: 2px solid transparent;
+ 
+}
+
+#navigation-purple .nav > li:hover {
+    border-bottom-color: #fff;
+}
+
+#navigation-purple .nav > li:focus {
+    background-color: transparent;
+}
+
+#navigation-purple .nav > li > a {
+    font-size: 18px;
+    color: white;
+}
+
+#navigation-purple .nav > li > a:hover,
+#navigation-purple .nav > li > a:focus {
+    background-color: transparent;
+}
+
+#navigation-purple .navbar-collapse {
+   
+}
+
+#navigation-purple .avatar {
+   background-size: cover;
+	width: 180px;
+	height: 90px;
+	align-self: center;
+	
+	float: left;
+}
+
+#navigation-purple .icon-bar {
+    background-color: white;
+}
+
+#navigation-purple .navbar-toggle {
+    border-color: white;
+    float: right;
+    margin-left: 25px;
+    margin-top: 25px;
+}
+
+#navigation-purple .navbar-toggle:hover, 
+#navigation-purple .navbar-toggle:focus {
+     background-color: transparent;
+}
+
+@media screen and (max-width: 767px) {
+
+    #navigation-purple .navbar-collapse {
+        padding-top: 0;
+    }
+
+    #navigation-purple ul>li {
+        float: left;
+        clear: left;
+        margin-left: 4px;
+        
+     
+		
+    }
+
+    #navigation-purple ul>li>a {
+    
+    }
+
+    #navigation-purple ul>li:hover {
+        border-bottom: 2px solid white;
+    }
+
+    #navigation-purple .avatar {
+    width: 170px;
+	height: 85	px;
+       
+     
+    }
+}

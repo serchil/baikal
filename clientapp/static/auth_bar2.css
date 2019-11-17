@@ -1,0 +1,28 @@
+.auth
+{
+	margin-top: 12px;
+
+	font-family: 'Fira Mono', monospace;
+	color:white;
+
+
+}
+.auth a:hover
+{
+	color: black;
+	text-decoration: none;
+}
+
+.username
+{
+color:white;
+font-size: 15px;
+}
+.out
+{font-size: 15px;
+	color:white;
+}
+#last
+{
+	margin-right: 20px;
+}

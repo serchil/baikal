@@ -1,0 +1,166 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+	<head>
+	<link rel="stylesheet" href="{% static 'fixed.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% static 'bootstrap.css' %}" type="text/css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{% static 'footer.css' %}" type="text/css">
+
+	<link rel="stylesheet" href="{% static 'auth_bar2.css' %}" type="text/css">
+
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport" />
+		<script src="https://vk.com/js/api/openapi.js?160" type="text/javascript"></script>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<title>О нас</title>
+		<link rel="stylesheet" href="{% static 'about_styles1.css' %}" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'account_styles0.css' %}" type="text/css">
+	</head>
+	<body>
+		<header style = "height: auto;">
+			<nav id = "menu11" class="navbar navbar-expand-lg navbar-dark ">
+				<a class="navbar-brand" href="#" style = "width:170px;">
+					<img src="{% static "images/logotype.png" %}" alt="Logo" style=" height: 80px;">
+				</a>
+				<div  id = "conts" class = "header_contacts " >
+					<div class = "phone1_num">
+						<i class="fa fa-phone" aria-hidden="true"></i>  8&nbsp;(999)&nbsp;777&nbsp;-&nbsp;83&nbsp;-&nbsp;00
+					</div>
+					<div class = "loc" >
+						<i class="fa fa-map-marker" aria-hidden="true" ></i>г.&nbsp;Иркутск,&nbsp;ул.&nbsp;Лермонтова,&nbsp;дом&nbsp;3
+					</div>
+				</div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon navbar-light"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbar1" >
+					<ul class="navbar-nav  ml-auto" style = "font-size: 18px; height: auto;">
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'index' %}">Главная <span class="sr-only">(current)</span></a></li>
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'rest' %}">Отдых&nbsp;на&nbsp;Байкале</a></li>
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'getArticles' %}">Блог</a></li>
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'getTeam' %}">О&nbsp;нас</a></li>
+						<li class="nav-item" id = "last" ><a class="nav-link"  style = "color: white;" href="{% url 'contacts' %}">Контакты</a></li>
+											<li class=" auth" >	<span class = "username"> {% if user.username %}{{user.username}} |</span> <a class = "out" href = "{% url 'log_out' %}">Выйти</a>{% else %} <a class= "out" href = "{% url 'go_auth' %}">Вход</a> | <a  class= "out" href = "{% url 'registr' %}">Регистрация</a>{%endif%} {%if user.is_staff == True%}|  <a class= "out" href = "{% url 'getTours' %}" > В&nbsp;админку</a>{%endif%}  </li>
+
+				</div>
+			</nav>
+		</header>
+
+
+
+	<div class = "backgr">
+		Регистрация
+	</div>
+
+
+	<div class = "middle">
+	<div class = "bread">
+	<ul id="breadcrumbs-one">
+				<li><a href="{% url 'index' %}">Главная</a></li>
+		<li class = "arrow">></li>
+		<li><a href="">Регистрация</a></li>
+	</ul>
+	</div>
+	</div>
+
+
+
+
+
+
+  <form class = "mn_form">
+
+	<div class = "row">	<span class = "label_settings" >Фамилия</span><textarea  name="subject" placeholder="Введите фамилию" class="text_settings" required></textarea></div>
+	<div class = "row">	<span  class = "label_settings">Имя</span><textarea  name="subject" placeholder="Введите имя" class="text_settings" required></textarea></div>
+	<div class = "row">	<span  class = "label_settings">Отчество</span><textarea  name="subject" placeholder="Введите отчество" class="text_settings" required></textarea></div>
+	<div class = "row">	<span  class = "label_settings">E-mail</span> <input type="email" placeholder="Введите e-mail" class="text_settings"  name="login" required></div>
+	<div class = "row">	<span  class = "label_settings">Телефон (в формете "7-XXXXXXXXXX")</span>  <input type="tel"  class="text_settings"  name="tel"    pattern="7[0-9]{10}"></div>
+	<div class = "row">	<span  class = "label_settings">Дата рождения</span><input id="date" class="text_settings" type="date" value="2017-06-01"></div>
+	<div class = "row">	<span  class = "label_settings">Пароль</span><input type="password" class="text_settings" maxlength="25" size="40" name="password"></p></div>
+
+		<div class = "row"><input name="submit" class="button" id = "ok" type="submit" value="Зарегистрироваться" />	</div>
+
+
+		</form>
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+			<div class = "footer_main_cont">
+				<div class = "footer_first_con">
+
+					<div class = "footer_contacts">
+
+						<p>тел.:8&nbsp;(999)&nbsp;777&nbsp;-&nbsp;83&nbsp;-&nbsp;00</p>
+						<p>г.&nbspИркутск, ул.&nbspЛермонтова, дом&nbsp3</p>
+							<p>E-mail: qqqq@mail.ru</p>
+						</div>
+
+						<div class = "footer_nav">
+							<nav class = "nav_class">
+
+
+								<a href="#">Туры</a>
+								<a href="#">Направления</a>
+								<a href="#">Проживание</a>
+								<a href="#">Трансфер</a>
+								<a href="#">Блог</a>
+								<a href="#">О&nbspнас</a>
+								<a href="#">Контакты</a>
+
+
+							</nav>
+						</div>
+
+						<div class = "footer_social">
+
+							<div class = "footer_social_icons">
+								<div class = "icons_h">Мы в соц сетях: </div>
+								<div class = "iconsSoc">
+                  <img src="{% static "images/vk.png" %}">
+              		<img src="{% static "images/inst.png" %}">
+              		<img src="{% static "images/facebook.png" %}">
+								</div>
+							</div>
+							<!--
+								<div class = "footer_logo">
+								<img id="footer_logo" src="http://demiart.ru/forum/uploads7/post-802773-1311062308.png" >
+								</div>
+							-->
+						</div>
+
+
+					</div>
+
+
+
+					<div class = "footer_sec_con">
+						<p>Агентство путешествий Resort </p>
+					</div>
+
+
+
+
+
+				</div>
+
+			</footer>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+		</body>
+</html>

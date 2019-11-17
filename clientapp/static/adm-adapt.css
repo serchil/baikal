@@ -1,0 +1,23 @@
+		 .wrapp
+		 {
+		  display: none;
+		  
+		 
+		  }
+		  
+		@media (max-width: 768px) {
+		.table 
+		{
+display: none;		
+		}
+		.wrapp
+		{
+		display:flex;
+		flex-direction: column;
+		justify-content:center;
+		align-items: center;
+		margin-top:20px;
+		}
+		.container1{
+		max-width: 350px;}
+}

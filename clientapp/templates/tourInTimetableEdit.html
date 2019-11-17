@@ -1,0 +1,411 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+	<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Расписание туров</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static 'footer.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'normolize.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'paginator3.css' %}" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}" type="text/css">
+
+		<link rel="stylesheet" type="text/css" href="{% static 'multi6.min.css' %}">
+    <script src="{% static 'js/mmulti.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'adm_tour_card_style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'adm_PlaceCard_style.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% static 'forinput.css' %}" type="text/css">
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+    function checkClick() {
+   $('.check').trigger('click');
+  }
+  </script>
+    <script>
+    $(function(){
+            $('.small_filter').click(function(){
+                $('.container1').toggleClass('filter_open');
+            });
+        });
+  </script>
+
+
+  <link rel="stylesheet" href="{% static 'adm-header-style1.css' %}" type="text/css">
+	</head>
+	<body> <style>.fa:hover{cursor: pointer;}</style>
+		<header>
+			<nav id = "list" class="navbar navbar-expand-lg navbar-dark " style = "background-color: rgba(37, 115, 187, 0.9); display:flex; flex-direction: column;">
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon navbar-light"></span>
+				</button>
+
+
+				<div class="collapse navbar-collapse" id="navbar1" >
+					<ul  class="navbar-nav  ml-auto" style = "display:flex; flex-direction: column;">
+						<div class = "menuPart"style = "display: flex;  ">
+					<li id = "el"  class="nav-item"><a class="nav-link"  style = "color: white;" href="{% url 'bookingsList' %}">Бронирования</a></li>
+
+							<li id = "el" class="nav-item"><a class="nav-link"  style = "color: white;" href="{% url 'userList'%}">Пользователи</a></li>
+							<li id = "el"  class="nav-item"><a class="nav-link"  style = "color: white;" href="{% url 'getTours' %}">Туры</a></li>
+							<li id = "el"  class="nav-item"><a class="nav-link"  style = "color: white;" href="{% url 'getHotels' %}">Гостиницы</a></li>
+							<li id = "el"  class="nav-item"><a class="nav-link"  style = "color: white;" href="{% url 'getPlaces' %}">Места</a></li>
+							<li id = "el" class="nav-item"><a class="nav-link"  style = "color: white;" href="{% url 'timetableList' %}">Расписание</a></li>
+						</div>
+					</ul>
+
+				</div>
+			</nav>
+		</header>
+
+
+
+			<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Административная панель </a></li>
+<li class="breadcrumb-item"><a href="{% url 'timetableList' %}">Расписание </a></li>
+    <li class="breadcrumb-item active" aria-current="page">Редактирование тура "{{tour_t.name}}"</li>
+  </ol>
+</nav>
+    <div class = "auth_bar" style="margin-left:90%;">
+	{{user.username}} | <a id = "out" href = "{% url 'log_out' %}">Выйти</a>
+	</div>
+
+
+		<hr style = "height: 1 px; width: 300px; background-color:#6666ff">
+			<h2 style = "text-align: center;">Редактирование тура в расписании</h2>
+
+
+
+<form method="POST" action="{% url 'editTimetable' tour_t.id %}" id = "contactForm2" class="post-form">
+		<div class = "container" id = "cont_card" style = "max-width: 750px; " >
+			<div class = "row" id = "first_row" >
+
+				<div class = "col-md-12" style = "background-color:#f5f5f5;  border: 1px solid black;">
+
+					<div class="row">
+
+						<div class="col-sm-3 mt-1">
+
+							<div class="form-group">
+								<label for="name"> Название </label>
+								<input type="text" name = "name" style="width:210px;" value="{{tour_t.name}}" class="form-control " id="validationServer01" required>
+
+							</div>
+						</div> </div>
+					<label for="name"> Тур </label>
+					<div class="row" style ="margin-top: 10px;">
+
+						<div class = "ml-3"style="width:230px; ">
+
+
+
+
+
+<select class="myselect ml-3" style="width:230px;" name = "selectedTour">
+{% for t in tours %}
+
+	<option>{{t.name}}</option>
+{% endfor %}
+</select>
+
+
+</div>
+
+						<div class = "col">
+
+						</div>
+
+
+					</div>
+
+
+
+					<div class="row">
+
+						<div class="col-sm-3 mt-1">
+
+							<div class="form-group">
+								<label for="name"> Стоимость </label>
+								<input type="number" name = "price" value="{{tour_t.price}}" style="max-width:400px;" class="form-control " id="validationServer01" required>
+
+							</div>
+						</div> </div>
+
+
+
+						<div class="row">
+
+							<div class="col-sm-3 mt-1">
+
+								<div class="form-group">
+									<label for="name"> Дата тура </label>
+									<input id="datepicker" value="{{date}}"  name = "date" width="225" />
+									<script>
+										$('#datepicker').datepicker({
+
+											uiLibrary: 'bootstrap4',
+
+										});
+
+
+									</script>
+
+								</div>
+							</div>
+
+						</div>
+						<label for="name"> Количество мест </label>
+						<div class="row ml-1">
+
+
+
+							<div>
+								<div class="btn-spn btn-spn-sm input-group " style = "max-width: 200px;"	>
+									<span class="input-group-btn">
+										<button
+										class="btn btn-secondary btn-spn-down"
+									type="button"><i class="fa fa-minus-square" aria-hidden="true"></i></i></button>
+								</span>
+								<input value='5' min='1' max='90' name = "num" class='btn-spn-input form-control text-center'>
+								<span class='input-group-btn'>
+									<button
+									class='btn btn-secondary btn-spn-up'
+									type='button'><i class="fa fa-plus"></i></button>
+								</span>
+							</div>
+
+						</div> </div>
+
+						<label for="text" style ="margin-top: 25px;"> Гостиницы в туре </label>
+						<div class="containerPlace">
+
+
+
+						 <select  multiple="multiple" name="hotels" id="hotel_select">
+						 {% for h in hotels %}
+								 <option>{{h.name}}</option>
+						{% endfor %}
+						 </select>
+
+
+		 </div>
+
+
+
+
+
+
+
+
+							<div class="row" style ="margin-top: 10px;">
+
+
+								<div class="container m-auto" style = "width: 100%; margin: 0 auto; ">
+<div class = "row" style = "margin-top: 30px;">
+	<div class ="col-sm-4">	</div>
+
+	<div class ="col-sm-4">	</div>
+		</div>
+</div>
+
+
+
+							</div>
+
+
+
+
+
+
+
+
+
+					 <div class = "row mt-3">
+<div class = "col-sm-3 mb-3"></div>
+  <div class = "col-sm-6 mb-3">
+<a class="btn btn-outline-dark  popup-open"  >Удалить</a>
+<a type="button" class="btn btn-secondary" href = "{% url 'timetableCard' tour_t.id %}">Отменить </a>
+
+  <button class="btn btn-primary  " type="submit">Сохранить</button>
+  </div>
+ <div class = "col-lg-4 col-md-4  "></div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				</div>
+			</div>
+		</div>
+
+</form>
+
+
+
+
+<div class="popup-fade">
+    <div class="popup">
+
+				<p>Вы уверены что хотите удалить тур из расписания?</p>
+				<a class="btn btn-outline-dark"  href = "{% url 'del_t' tour_t.id %}">Удалить</a>
+				<a type="button" class="btn btn-secondary popup-close" href = "">Отменить </a>
+
+
+    </div>
+</div>
+
+<style>
+.popup-fade {
+    display: none;
+}
+.popup-fade:before {
+    content: '';
+    background: #000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    z-index: 9999;
+}
+.popup {
+    position: fixed;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 160px;
+    top: 20%;
+    left: 50%;
+    padding: 20px;
+    width: 360px;
+    margin-left: -200px;
+    background: #fff;
+	    border: 1px solid black;
+    border-radius: 2px;
+    z-index: 99999;
+    opacity: 1;
+}
+
+</style>
+
+<script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function($) {
+    $('.popup-open').click(function() {
+        $('.popup-fade').fadeIn();
+        return false;
+    });
+
+    $('.popup-close').click(function() {
+        $(this).parents('.popup-fade').fadeOut();
+        return false;
+    });
+
+    $(document).keydown(function(e) {
+        if (e.keyCode === 27) {
+            e.stopPropagation();
+            $('.popup-fade').fadeOut();
+        }
+    });
+
+    $('.popup-fade').click(function(e) {
+        if ($(e.target).closest('.popup').length == 0) {
+            $(this).fadeOut();
+        }
+    });
+});
+</script>
+
+
+		<script>
+
+			addEventListenerAll('.btn-spn-up', 'click', event => this.spinUp(event))
+			addEventListenerAll('.btn-spn-down', 'click', event => this.spinDown(event))
+
+			function spinUp(event) {
+				var spinRoot = event.currentTarget.parentElement.parentElement  // .btn-spn
+				var spinInput = spinRoot.children[1]
+				if (!spinInput.value || spinInput.value==="" || isNaN(parseInt(spinInput.value)))
+				spinInput.value = 0
+				var spinValue = parseInt(spinInput.value)
+
+				var max = spinInput.getAttribute('max')
+				if (!max || spinValue < max)
+				spinInput.value = spinValue+1
+				else if (max && spinValue > max)
+				spinInput.value = max
+			}
+
+			function spinDown(event) {
+				var spinRoot = event.currentTarget.parentElement.parentElement  // .btn-spn
+				var spinInput = spinRoot.children[1]
+				if (!spinInput.value || spinInput.value==="" || isNaN(parseInt(spinInput.value)))
+				spinInput.value = 0
+				var spinValue = parseInt(spinInput.value)
+
+				var min = spinInput.getAttribute('min')
+				if (!min || spinValue > min)
+				spinInput.value = spinValue-1
+				else if (min && spinValue < min)
+				spinInput.value = min
+			}
+
+			function addEventListenerAll(selector, eventName, eventHandler) {
+				var elements = document.querySelectorAll(selector)
+				for(var i = 0; i<elements.length; i++) {
+					elements[i].addEventListener(eventName, eventHandler)
+				}
+			}</script>
+
+
+
+
+	</div>
+		<script type="text/javascript" src=" {% static 'js/jquery-3.3.1.min.js' %} "></script>
+		<script type="text/javascript" src=" {% static 'js/popper.js' %} "></script>
+		<script type="text/javascript" src=" {% static 'js/bootstrap.js' %} "></script>
+
+
+			<script>
+
+						 var select = document.getElementById("hotel_select");
+						 multi(select, {
+								 non_selected_header: "Гостиницы",
+								 selected_header: "Выбранные",
+
+						 });
+
+
+				 </script>
+				 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+			 	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+				 <script type="text/javascript">
+      $(".myselect").select2();
+</script>
+
+</body>
+</html>

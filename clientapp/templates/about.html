@@ -1,0 +1,214 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+	<head>
+	<link rel="stylesheet" href="{% static 'fixed.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% static 'bootstrap.css' %}" type="text/css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{% static 'footer.css' %}" type="text/css">
+
+	<link rel="stylesheet" href="{% static 'auth_bar2.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% static 'forinput.css' %}" type="text/css">
+
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport" />
+		<script src="https://vk.com/js/api/openapi.js?160" type="text/javascript"></script>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<title>О нас</title>
+		<link rel="stylesheet" href="{% static 'about_styles1.css' %}" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+
+	</head>
+	<body>
+		<header style = "height: auto;">
+			<nav id = "menu11" class="navbar navbar-expand-lg navbar-dark ">
+				<a class="navbar-brand" href="#" style = "width:170px;">
+					<img src="{% static "images/logotype.png" %}" alt="Logo" style=" height: 80px;">
+				</a>
+				<div  id = "conts" class = "header_contacts " >
+					<div class = "phone1_num">
+						<i class="fa fa-phone" aria-hidden="true"></i>  8&nbsp;(999)&nbsp;777&nbsp;-&nbsp;83&nbsp;-&nbsp;00
+					</div>
+					<div class = "loc" >
+						<i class="fa fa-map-marker" aria-hidden="true" ></i>г.&nbsp;Иркутск,&nbsp;ул.&nbsp;Лермонтова,&nbsp;дом&nbsp;3
+					</div>
+				</div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon navbar-light"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbar1" >
+					<ul class="navbar-nav  ml-auto" style = "font-size: 18px; height: auto;">
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'index' %}">Главная <span class="sr-only">(current)</span></a></li>
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'rest' %}">Отдых&nbsp;на&nbsp;Байкале</a></li>
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'getArticles' %}">Блог</a></li>
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'getTeam' %}">О&nbsp;нас</a></li>
+						<li class="nav-item" id = "last" ><a class="nav-link"  style = "color: white;" href="{% url 'contacts' %}">Контакты</a></li>
+            <li class=" auth" >	<a class = "username" href="{% url 'personal_account_show' %}"> {% if user.username %}{{user.username}} </a> |  <a class = "out" href = "{% url 'log_out' %}">Выйти</a>{% else %} <a class= "out" href = "{% url 'go_auth' %}">Вход</a> | <a  class= "out" href = "{% url 'registr' %}">Регистрация</a>{%endif%} {%if user.is_staff == True%}|  <a class= "out" href = "{% url 'bookingsList' %}" > В&nbsp;админку</a>{%endif%}  </li>
+
+				</div>
+			</nav>
+		</header>
+
+
+
+	<div class = "backgr">
+
+		О нас
+	</div>
+
+
+	<div class = "middle">
+
+	<div class = "bread">
+
+	<ul id="breadcrumbs-one">
+				<li><a href="{% url 'index' %}">Главная</a></li>
+		<li class = "arrow">></li>
+
+		<li><a href="">О нас</a></li>
+
+
+
+	</ul>
+
+	</div>
+
+
+
+	</div>
+
+
+
+
+
+{{data}}
+<hr size=1px width=150px align="center" color = "#6666ff">
+<div class = "text_about">
+	Наша команда работает на туристическом рынке с 2011 года. Мы постоянно развиваемся и становимся лучше. И сейчас можем предложить Вам множество видов отдыха на Байкале: круизы, джип-туры, трекинг, фотоохота, рыбалка, вертолетные экскурсии, ледовые экспедиции и многое другое.
+Все сотрудники нашей компании родом из Иркутска, каждый бывал на Байкале не раз и прекрасно знает его географию и туристические возможности. Мы любим отдыхать на Байкале, а значит, покажем и вам лучшие места для отдыха. Мы проводим туры 4 сезона в году, предлагаем организацию туров различного масштаба и сложности – от ознакомительных экскурсий до активных приключенческих маршрутов через все озеро, от бюджетных поездок до корпоративных программ и туров класса «Премиум».
+	</div>
+{% if team %}
+<div class = "command">
+<div class="section_title">
+	<hr style = "height: 1 px; width: 300px; background-color:#6666ff">
+		<h1>Наша команда</h1>
+		</div>
+
+		<div class = "command_main_cont">
+
+{% for person in team %}
+		<div class = "command_card">
+		<div class = "com_photo">
+		<img src = "{{person.img.url}}">
+		</div>
+		<div class = "com_name"> {{person.name}}
+		</div>
+		<div class = "com_description">
+	{{person.position}}
+		</div>
+		<div class = "com_text">
+	{{person.description}}	</div>
+
+		</div>
+
+    {% endfor %}
+
+
+		</div>
+
+</div>
+{% endif %}
+
+<div class="section_title">
+	<hr style = "height: 1 px; width: 300px; background-color:#6666ff">
+		<h1>Наши преимущества</h1>
+		</div>
+
+<div class = "advantages">
+		<div class = "adv_card_cont">
+		<img src = "{% static "images/travel.png" %}">
+		<p> Вы экономите свое время, потому что мы используем только передовые технологии
+		</p>
+		</div>
+
+
+<div class = "adv_card_cont">
+		<img src = "{% static "images/travel.png" %}">
+		<p> Вы защищены как потребитель. Качество наших услуг соответствует международным стандартам качества ISO 0889.25 и ISO 0978.18.
+		</p>
+		</div>
+
+		<div class = "adv_card_cont">
+		<img src = "{% static "images/travel.png" %}">
+		<p> У нашего банка налажены партнерские связи с банками соседних государств, а это значит, что Вы сможете свободно выходить на смежные рынки.
+		</p>
+		</div>
+
+
+	</div>
+
+
+
+
+<footer>
+			<div class = "footer_main_cont">
+				<div class = "footer_first_con">
+
+					<div class = "footer_contacts">
+
+						<p>тел.:8&nbsp;(999)&nbsp;777&nbsp;-&nbsp;83&nbsp;-&nbsp;00</p>
+						<p>г.&nbspИркутск, ул.&nbspЛермонтова, дом&nbsp3</p>
+							<p>E-mail: qqqq@mail.ru</p>
+						</div>
+
+						<div class = "footer_nav">
+							<nav class = "nav_class">
+
+		<a href="{% url 'getTours' %}">Туры</a> <a href="{% url 'getPlaces' %}">Направления</a> <a href="{% url 'getHotels' %}">Проживание</a> <a href="{% url 'transfer' %}">Трансфер</a><a href="{% url 'getArticles' %}">Блог</a><a href="{% url 'getTeam' %}">О&nbspнас</a><a href="{% url 'contacts' %}">Контакты</a>
+
+
+
+							</nav>
+						</div>
+
+						<div class = "footer_social">
+
+							<div class = "footer_social_icons">
+								<div class = "icons_h">Мы в соц сетях: </div>
+								<div class = "iconsSoc">
+                  <img src="{% static "images/vk.png" %}">
+              		<img src="{% static "images/inst.png" %}">
+              		<img src="{% static "images/facebook.png" %}">
+								</div>
+							</div>
+							<!--
+								<div class = "footer_logo">
+								<img id="footer_logo" src="http://demiart.ru/forum/uploads7/post-802773-1311062308.png" >
+								</div>
+							-->
+						</div>
+
+
+					</div>
+
+
+
+					<div class = "footer_sec_con">
+						<p>Агентство путешествий Resort </p>
+					</div>
+
+
+
+
+
+				</div>
+
+			</footer>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+		</body>
+</html>

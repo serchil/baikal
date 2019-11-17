@@ -1,0 +1,119 @@
+		@media (max-width: 768px) {
+			.categories
+			{
+			max-width: 760px;
+			}
+			.cat_icon img
+			{
+			width: 67px;
+			height: 60px;
+			}
+			.cat_icon
+			{
+			width: 67px;
+			height: 60px;
+			}
+			.cat_title
+			{
+			text-align : center;
+			font-family: 'Open Sans Condensed', sans-serif;
+			font-size: x-large;
+			font-weight: 400;
+			color: black;
+			font-size: 20px;
+			
+			}
+			.categories_cont
+			{
+			max-width: 460px;
+			max-height: 350px;
+			margin-top: -25%;
+			
+			}
+			.mobilePic
+			{
+			display: block;
+			}
+			.cont
+			{
+			margin-left: 0px;
+			margin-right: 0px;
+			}
+			.projetos
+			{
+			
+			display:  none;
+			}
+			
+		
+		.card
+		{
+		max-width: 300px;
+		min-width: 300px;
+		margin: 0px;
+		margin-bottom: 30px;
+		}
+		
+		.tour_img img
+		{
+		width: 300px;
+		height: 255px;
+		}
+		.card_button
+		{
+		width: 300px;
+		}
+		
+		.card_button_place1
+		{
+		width: 150px;
+		}
+		.card_button_place2
+		{
+		width: 146px;
+		overflow:hidden;
+		}
+		.card_button_place2 a
+		{
+		font-size: 17px;
+		margin-top: 5px;
+		}
+		.card_button_place1 a
+		{
+		font-size: 20px;
+		margin-top: 3px;
+		}
+		.comm_text p
+		{
+		font-size: 18px;
+		
+		}
+		.comm_text
+		{
+		margin-left: 21px;
+		}
+		#formButt
+		{
+		width: 100px;
+		}
+		.contact_text
+		{
+		font-size: 20px;
+		margin-top:10px;
+		
+		}
+		
+		.contact_text img
+		{
+		width: 20px;
+		height: 20px;
+		
+		}
+		.map
+		{
+		width: 80%;
+		
+		}
+		}
+		
+		

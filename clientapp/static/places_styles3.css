@@ -1,0 +1,313 @@
+.middle
+{
+	width: 70%;
+	margin-left: 5%;
+	display: inline-block;
+margin-top: 10px;
+}
+*, ::after, ::before
+{
+	box-sizing: content-box;
+}
+ #breadcrumbs-one{
+margin: 0 auto;
+margin-left: -38px;
+ }
+
+#breadcrumbs-one li
+{
+	list-style: none;
+float:left;
+ padding: 5px;
+}
+
+
+#breadcrumbs-one li a
+{
+	color:black;
+	text-decoration: none;
+
+
+}
+
+#breadcrumbs-one li a:hover
+{
+	font-weight: 900;
+
+}
+
+
+.section_title
+{
+text-align : center;
+margin-top: 50px;
+text-align : center;
+font-family: 'Open Sans Condensed', sans-serif;
+font-size: x-large;
+font-weight: 400;
+color: black;
+padding-top: 10px;
+align-self: center;
+}
+/*********************************
+3. Направления
+*********************************/
+
+.cont
+{
+display: flex;
+align-items: center;
+justify-content: center;
+align-self: flex-end;
+flex-wrap: wrap;
+margin-left: 100px;
+margin-right: 100px;
+}
+
+.card
+{
+	background: white;
+z-index : 3;
+position: relative;
+width: 100%;
+height: 100%;
+max-width: 350px;
+
+min-height: 590px;
+margin: 30px;
+margin-bottom: 20px;
+
+
+
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.35);
+
+}
+
+.card:hover
+{
+box-shadow: 0px 20px 50px rgba(0,0,0,0.35);
+}
+
+.card div:nth-child(1)
+{
+	order :-1;
+}
+.card div:nth-child(2)
+{
+	order :0;
+}
+.card div:nth-child(3)
+{
+	order:1;
+}
+
+
+
+.tour_img img
+{
+
+width: 350px;
+height: 280px;
+}
+
+.card_text p
+{
+	color:black;
+	margin-top: 0px;
+	margin-bottom:0px;
+}
+
+.card_text .main
+{
+	font-family: 'Didact Gothic', sans-serif;
+	font-size: x-large;
+font-weight: bold;
+	text-align:center;
+	margin-bottom: 3px;
+}
+
+.card_text .card_description
+{
+font-family: 'Didact Gothic', sans-serif;
+padding-left: 10px;
+padding-right: 3px;
+padding-top: 3px;
+	font-size: large;
+	text-align:left;
+	margin-bottom:20px;
+}
+
+
+.card_button
+{
+	background :#fde910;
+	max-width: 350px;
+	height:40px;
+
+
+	text-align:center;
+	font-size: x-large;
+	font-family: 'Didact Gothic', sans-serif;
+
+}
+
+.card_button a
+{
+	display: block;
+	padding-top: 2px;
+
+	text-decoration: none;
+	color: black;
+
+}
+
+.card_button:hover {
+   background-color: black;
+
+   transition: box-shadow 200ms linear 0ms;
+}
+
+.card_button a:hover
+{
+
+	color: white;
+
+}
+
+.card_info
+{
+
+display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  color: #808080;
+}
+
+
+
+
+
+
+
+
+
+.card_buttons
+{
+	display : flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+}
+
+.card_button_place1
+{
+	background :#fde910;
+	width: 175px;
+	height:70px;
+
+
+	text-align:center;
+	font-size: x-large;
+	font-family: 'Didact Gothic', sans-serif;
+	color: black;
+
+
+}
+
+.card_button_place1 a
+{
+	width: 175px;
+	height:70px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	padding-top:17px;
+
+}
+.card_button_place1 {
+   transition: all 500ms linear 0ms;
+}
+
+
+
+
+.card_button_place2
+{
+	background :white;
+	border: 2px solid #fde910;
+	width: 171px;
+	height:70px;
+	align-self: center;
+
+
+
+
+	font-family: 'Didact Gothic', sans-serif;
+
+}
+
+.card_button_place2 a
+{
+	width: 180px;
+	height:70px;
+	display: block;
+	text-decoration: none;
+	text-align:left;
+	padding-left:5px;
+	font-size: 20px;
+	color: black;
+	padding-bottom:0px;
+	padding-top: 17px;
+	padding-right: 2px;
+
+}
+.card_button_place2 {
+   transition: all 100ms linear 0ms;
+}
+.card_button_place2:hover {
+   box-shadow: 0 0 40px 40px #fde910 inset;
+   transition: box-shadow 100ms linear 0ms;
+}
+
+.pages
+{
+	color: black;
+	display: flex;
+	justify-content: center;
+
+
+}
+
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 30px;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+ul.pagination li a.active {
+    background-color: #3b81c2;
+    color: white;
+}
+
+ul.pagination li a:hover
+{background-color: #cccccc;
+
+
+}
+
+@media

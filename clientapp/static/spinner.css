@@ -1,0 +1,37 @@
+html
+{
+  font-size: 1rem;
+}
+body 
+{
+  background-color: #212529;
+}
+form {
+  padding: 1rem;
+  background-color: #404040;
+  border-radius: 6px;
+}
+
+.btn-spn
+{
+}
+.btn-spn-input
+{
+  border-bottom: white;
+}
+.btn-spn-sm
+{
+  width:7.2rem;
+}
+.btn-spn-md
+{
+  width:7.8rem;
+}
+.btn-spn-lg 
+{
+  width:8.9rem;
+}
+.btn-spn-xl
+{
+  width:14rem;
+}

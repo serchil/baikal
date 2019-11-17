@@ -1,0 +1,29 @@
+.section_title 
+{
+text-align : center;
+margin-top: 150px;
+text-align : center;
+font-family: 'Open Sans Condensed', sans-serif;
+font-size: x-large;
+font-weight: 400;
+color: black;
+padding-top: 10px;
+align-self: center;
+}
+label
+{
+	padding-top: 10px;
+}
+#cont_card
+{
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+.map
+{
+	margin-bottom: 20px;
+}
+.backgr
+{
+	height:1px;
+}

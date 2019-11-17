@@ -1,0 +1,77 @@
+
+.small_filter 
+{
+	display: flex;
+	justify-content: center;
+margin: 0 auto;
+width: 30px; height: 30px;
+
+}
+.forSmallFilter
+{
+	margin-top: 30px;
+	
+	
+}
+.small_filter
+{
+	
+}
+.small_filter:hover
+{
+	cursor: pointer;
+}
+.filter_open
+{
+	display: block !important;
+}
+.container1
+{
+	display:none;
+}
+#el:hover {
+background: rgba(0, 0, 0, 0.5);
+}
+#el
+{
+background: #0000c2;
+margin: 1px;
+padding: 1px;
+
+
+
+}
+.list
+{
+display: flex;
+flex-wrap: wrap;}
+
+
+
+
+@media screen and (max-width: 991px) {
+	
+.menuPart
+{
+	width: 100%;
+
+	flex-direction:column;
+	
+}
+#el
+{
+	background: none;
+}
+#navbar1
+{
+	width: 100%;
+}
+}
+
+
+
+.container1
+{
+	max-width: 550px; margin: 0 auto; background-color:#f5f5f5;  padding: 10px; border: 1px solid black; margin-top: 30px;
+}
+

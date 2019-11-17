@@ -1,0 +1,741 @@
+<!doctype html>
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+<html>
+	<head>
+		<title>Бронирование тура</title>
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+					<link rel="stylesheet" href="{% static 'bootstrap.css' %}" type="text/css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{% static 'fixed.css' %}" type="text/css">
+
+		<link rel="stylesheet" href="{% static 'forinput.css' %}" type="text/css">
+
+
+	<link rel="stylesheet" href="{% static 'auth_bar2.css' %}" type="text/css">
+
+	<link rel="stylesheet" href="{% static 'footer.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'normolize.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% static 'account_styles.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'tourCard_styles.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'tours_info_styles.css' %}" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+
+
+
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script type="text/javascript" src=" {% static 'js/jquery.validate.js' %} "></script>
+
+	</head>
+	<body> <style>.fa:hover{cursor: pointer;}</style>
+
+    		<header style = "height: auto;">
+    			<nav id = "menu11" class="navbar navbar-expand-lg navbar-dark ">
+    				<a class="navbar-brand" href="#" style = "width:170px;">
+    					<img src="{% static "images/logotype.png" %}" alt="Logo" style=" height: 80px;">
+    				</a>
+    				<div  id = "conts" class = "header_contacts " >
+    					<div class = "phone1_num">
+    						<i class="fa fa-phone" aria-hidden="true"></i>  8&nbsp;(999)&nbsp;777&nbsp;-&nbsp;83&nbsp;-&nbsp;00
+    					</div>
+    					<div class = "loc" >
+    						<i class="fa fa-map-marker" aria-hidden="true" ></i>г.&nbsp;Иркутск,&nbsp;ул.&nbsp;Лермонтова,&nbsp;дом&nbsp;3
+    					</div>
+    				</div>
+    				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+    					<span class="navbar-toggler-icon navbar-light"></span>
+    				</button>
+    				<div class="collapse navbar-collapse" id="navbar1" >
+    					<ul class="navbar-nav  ml-auto" style = "font-size: 18px; height: auto;">
+    						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'index' %}">Главная <span class="sr-only">(current)</span></a></li>
+    						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'rest' %}">Отдых&nbsp;на&nbsp;Байкале</a></li>
+    						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'getArticles' %}">Блог</a></li>
+    						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'getTeam' %}">О&nbsp;нас</a></li>
+    						<li class="nav-item" id = "last" ><a class="nav-link"  style = "color: white;" href="{% url 'contacts' %}">Контакты</a></li>
+    						<li class=" auth" >	<span class = "username"> {% if user.username %}{{user.username}} |</span> <a class = "out" href = "{% url 'log_out' %}">Выйти</a>{% else %} <a class= "out" href = "{% url 'go_auth' %}">Вход</a> | <a  class= "out" href = "{% url 'registr' %}">Регистрация</a>{%endif%} {%if user.is_staff == True%}|  <a class= "out" href = "{% url 'getTours' %}" > В&nbsp;админку</a>{%endif%}  </li>
+    					</ul>
+
+    				</div>
+    			</nav>
+    		</header>
+		<div class = "backgr">
+
+
+		Бронирование тура
+	</div>
+
+	<div class = "middle">
+
+	<div class = "bread">
+
+	<ul id="breadcrumbs-one">
+		<li><a href="index.html">Главная</a></li>
+		<li class = "arrow">></li>
+		<li><a href="">Список туров</a></li>
+		<li class = "arrow">></li>
+		<li><a href="">Тур Хрустальный Байкал</a></li>
+		<li class = "arrow">></li>
+		<li><a href="">Информация о туре</a></li>
+		<li class = "arrow">></li>
+		<li><a href="">Бронирование тура</a></li>
+
+
+	</ul>
+
+	</div>
+
+
+
+	</div>
+
+
+
+
+
+<div class = "main_cont1">
+
+
+		<div class = "conditions">
+
+
+<div class = "c">
+
+<div class = "datesOnfo"><span><i class="fa fa-suitcase" aria-hidden="true"></i></span>  <span class = "heading"> Тур: <span> {{tour.name}}</span> </span></br>
+<span><i class="fa fa-calendar" aria-hidden="true"></i></span>  <span class = "heading"> Дата начала тура: <span>{{tourInT.date | date:"d M Y"}}</span> </span></br>
+<span class = "heading"> <span><i class="fa fa-calendar" aria-hidden="true"></i> Количество дней: <span> {{tour.number_of_days}}</span> </span>       </div>
+
+
+
+</div>
+
+</div>
+<form class = "mn_form1" style = "padding-top: 10px; padding-bottom: 10px; margin-bottom: 40px; ">
+		<div class = "row1"  style = "height:40px;">	<span style = "color: black; font-size: 22px; margin-right: 10px;" > Количество человек:</span><input type="number" id="numOfpeople" style = "border:rgba(0,0,0,.3) 2px solid;
+    box-sizing:border-box;  font-size:20px;
+	font-family: 'Didact Gothic', sans-serif;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+
+    padding:5px;
+    margin-bottom:30px;
+    overflow:hidden;	"  class="teext_settings" size="3" name="num" min="1" max="10" value="1" style = "max-width:100px;"></div>
+<div class = "row1" style = "height:40px;">	<span style = "color: black; font-size: 22px; margin-right: 10px;" > Стоимость тура: <span id = "price" style = "font-weight:900;">{{tourInT.price}} </span>р</span></div>
+		</form>
+<script>
+		$('#numOfpeople').bind('input', function() {
+		  numOfPeople =   $(this).val()
+			var price = {{tourInT.price}}
+			document.getElementById("price").innerHTML=price*numOfPeople;
+			href = "../../addNewBooking"+"/"+{{tourInT.id}}+"/"+numOfPeople+"/";
+		if (document.getElementById("UserForm")!=null) 	document.getElementById("UserForm").setAttribute("action", href);
+		if (document.getElementById("book_now")!=null) 	document.getElementById("book_now").setAttribute("act", href);
+			console.log("dd");
+		});
+</script>
+<style>
+a:not([href]):not([tabindex]):hover
+{
+	color: white;
+	cursor: pointer;
+}
+</style>
+
+{% if user %}
+<a id = "book_now" action="" class = "more_button">Забронировать</a>
+{% else %}
+
+
+				 				 		    <form method="POST" action="" id = "UserForm" enctype="multipart/form-data" style = "width:30%; min-width:300px; padding-left:20px;font-size: 18px; " >{% csrf_token %}
+													<p style="color:black; font-size: 23px; text-align: center;"> Заполните информацию</p>
+				 				 		        {{ form | crispy}}
+
+<button id = "book" type="button" style="margin-top:20px;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Забронировать</button>
+
+				</form>
+
+				<script type='text/javascript'>
+
+				$( document ).ready(function() {
+
+					var sp1 = document.createElement("div");
+
+					sp1.innerHTML = '<label for="id_password" class="col-form-label "> Повторите пароль </label> <div class=""> <input type="text" name="password" maxlength="200" class="textinput textInput form-control" id="new_password"> </div>  <div class="alert alert-danger" id = "warning_password" role="alert" style = "margin-top: 10px; display: none"> Введенные пароли не совпадают </div> ';
+          var sp2 = document.getElementById("book");
+					var parentDiv = sp2.parentNode;
+
+					parentDiv.insertBefore(sp1, sp2);
+
+					var elem = document.getElementById("id_password");
+					elem.setAttribute("type", "password");
+					elem = document.getElementById("new_password");
+					elem.setAttribute("type", "password");
+
+				});
+
+
+				</script>
+		{% endif %}
+<script>
+$("#UserForm").validate({
+	rules: {
+		email: {
+			required: true,
+			email: true,
+			minlength: 3
+		},
+		phone_number:{
+			digits:true,
+		}
+
+	}
+});
+
+$( document ).ready(function() {
+
+
+
+var numOfPeople =1;
+var href = "../../addNewBooking"+"/"+{{tourInT.id}}+"/"+numOfPeople+"/";
+if (document.getElementById("UserForm")!=null) document.getElementById("UserForm").setAttribute("action", href);
+if (document.getElementById("book_now")!=null) document.getElementById("book_now").setAttribute("act", href);
+
+
+	});
+$(function(){
+				$('#new_password').click(function(e){
+				document.getElementById("warning_password").style.display = "none";
+				});
+
+	});
+	$(function(){
+					$('#id_password').click(function(e){
+					document.getElementById("warning_password").style.display = "none";
+					});
+
+		});
+</script>
+<div  id="wrap"></div>
+
+			<div id="window">
+				<div>		<img id="done" src="http://i.yapx.ru/FHoWC.png">
+
+			</div>
+<div style="font-size:20px; text-align:center;">Благодарим Вас за бронирование! Наши менеджеры свяжутся с Вами в ближайшее время.</div>
+
+	<a href="{% url 'getTours' %}"  class="btn btn-primary" id ="ok1"> ОК</a>
+
+
+			</div>
+
+		<style type="text/css">
+@media (min-width: 700px)
+{
+	#done
+	{
+		margin-left: 160px;
+		margin-right: 180px;
+		margin-bottom: 20px;
+		width:20%;
+		height:20%;
+	}
+#ok1
+{
+	margin-left: 130px;
+	margin-right: 180px;
+	margin-top: 20px;
+	margin-bottom: 1000px;
+	width: 100px;
+}
+		#wrap{
+			display: none;
+			opacity: 0.8;
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			padding: 16px;
+			background-color: rgba(1, 1, 1, 0.725);
+			z-index: 100;
+			overflow: auto;
+		}
+
+		#window{
+			width: 400px;
+			height: 220px;
+			margin: 50px auto;
+			display: none;
+			background: #fff;
+			z-index: 200;
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			padding: 16px;
+		}
+
+		.close{
+			margin-left: 364px;
+			margin-top: 4px;
+			cursor: pointer;
+		}
+}
+
+		@media (max-width: 699px)
+		{
+
+			#done
+			{
+				margin-left: 140px;
+margin-right: 140px;
+				width:10%;
+				height:10%;
+				margin-bottom: 20px;
+			}
+			#ok1
+			{
+				margin-left: 100px;
+				margin-right: 100px;
+				margin-top: 20px;
+				margin-bottom: 1000px;
+				width: 80px;
+			}
+					#wrap{
+						display: none;
+						opacity: 0.8;
+						position: fixed;
+						left: 0;
+						right: 0;
+						top: 0;
+						bottom: 0;
+						padding: 16px;
+						background-color: rgba(1, 1, 1, 0.725);
+						z-index: 100;
+						overflow: auto;
+					}
+
+					#window{
+						width: 300px;
+						height: 200px;
+						margin: 50px auto;
+						display: none;
+						background: #fff;
+						z-index: 200;
+						position: fixed;
+						left: 0;
+						right: 0;
+						top: 0;
+						bottom: 0;
+						padding: 16px;
+					}
+
+					.close{
+						margin-left: 364px;
+						margin-top: 4px;
+						cursor: pointer;
+					}
+		}
+
+		@media (max-width: 400px)
+		{
+
+			#done
+			{
+				margin-left: 115px;
+margin-right: 140px;
+				width:10%;
+				height:10%;
+				margin-bottom: 20px;
+			}
+			#ok1
+			{
+				margin-left: 70px;
+				margin-right: 100px;
+				margin-top: 20px;
+				margin-bottom: 1000px;
+				width: 80px;
+			}
+					#wrap{
+						display: none;
+						opacity: 0.8;
+						position: fixed;
+						left: 0;
+						right: 0;
+						top: 0;
+						bottom: 0;
+						padding: 16px;
+						background-color: rgba(1, 1, 1, 0.725);
+						z-index: 100;
+						overflow: auto;
+					}
+
+					#window{
+						width: 250px;
+						height: 200px;
+						margin: 50px auto;
+						display: none;
+						background: #fff;
+						z-index: 200;
+						position: fixed;
+						left: 0;
+						right: 0;
+						top: 0;
+						bottom: 0;
+						padding: 16px;
+					}
+
+					.close{
+						margin-left: 364px;
+						margin-top: 4px;
+						cursor: pointer;
+					}
+		}
+
+
+
+</style>
+
+<script>
+var allow = true;
+$(function(){
+				$('#book').click(function(e){
+
+if(document.getElementById("id_password").value != document.getElementById("new_password").value)
+{
+document.getElementById("warning_password").style.display = "block";
+allow = false;
+
+}
+
+});
+});
+
+
+function getCookie(csrfmiddlewaretoken) {
+		var cookieValue = null;
+		if (document.cookie && document.cookie !== '') {
+				var cookies = document.cookie.split(';');
+				for (var i = 0; i < cookies.length; i++) {
+						var cookie = jQuery.trim(cookies[i]);
+						// Does this cookie string begin with the name we want?
+						if (cookie.substring(0, name.length + 1) === (name + '=')) {
+								cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+								break;
+						}
+				}
+		}
+		return cookieValue;
+}
+
+
+
+$(function(){
+				$('#UserForm').submit(function(e){
+
+
+var form = new FormData(document.getElementById("UserForm"));
+
+						e.preventDefault();
+						var m_method=$(this).attr('method');
+						var m_action=$(this).attr('action');
+						var m_data=$(this).serialize();
+
+						var formData = new FormData(this);
+
+
+						$.ajax({
+								type: 'POST',
+								url: m_action,
+								data: formData,
+								contentType: false,
+								processData: false,
+
+
+
+								success: function(data){
+
+console.log(data);
+document.getElementById('window').style.display = "block";
+document.getElementById('wrap').style.display = "block";
+
+}
+
+
+
+
+})
+
+
+						});
+
+				});
+
+
+				$(function(){
+								$('#book_now').click(function(e){
+									$.ajaxSetup({
+										 beforeSend: function(xhr, settings) {
+												 function getCookie(name) {
+														 var cookieValue = null;
+														 if (document.cookie && document.cookie != '') {
+																 var cookies = document.cookie.split(';');
+																 for (var i = 0; i < cookies.length; i++) {
+																		 var cookie = jQuery.trim(cookies[i]);
+																		 // Does this cookie string begin with the name we want?
+																		 if (cookie.substring(0, name.length + 1) == (name + '=')) {
+																				 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+																				 break;
+																		 }
+																 }
+														 }
+														 return cookieValue;
+												 }
+												 if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+														 // Only send the token to relative URLs i.e. locally.
+														 xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+												 }
+										 }
+								});
+
+										e.preventDefault();
+
+										var m_action=$(this).attr('act');
+										console.log(m_action);
+
+
+
+										$.ajax({
+												type: 'POST',
+												url: m_action,
+												data: {'csrfmiddlewaretoken': getCookie("csrftoken"),},
+
+
+
+
+
+												success: function(data){
+
+				console.log(data);
+				document.getElementById('window').style.display = "block";
+				document.getElementById('wrap').style.display = "block";
+
+				}
+
+
+
+
+				})
+
+
+										});
+
+								});
+
+
+
+
+
+
+</script>
+
+
+
+
+<script>
+
+
+// $(function(){
+// 				$('#UserForm').submit(function(e){
+//
+// console.log("MEEEWWW")
+//
+// var form = new FormData(document.getElementById("UserForm"));
+// 		//отменяем стандартное действие при отправке формы
+// 						e.preventDefault();
+// 						var m_method=$(this).attr('method');
+// 						var m_action=$(this).attr('action');
+// 						var m_data=$(this).serialize();
+//
+// 						var formData = new FormData(this);
+//
+//
+// 						$.ajax({
+// 								type: 'POST',
+// 								url: m_action,
+// 								data: formData,
+// 								contentType: false,
+// 								processData: false,
+//
+//
+//
+// 								success: function(data){
+//
+// console.log(data);
+//
+// }
+//
+//
+//
+//
+// })
+//
+//
+// 						});
+//
+// 				});
+
+</script>
+
+
+
+
+
+
+
+
+<!--<script>
+
+
+		$(function(){
+						$('#book').click(function(e){
+var allow = true;
+if(document.getElementById("login").value != document.getElementById("login2").value)
+{allow = false;
+	document.getElementById("warning_mail").style.display = "block";
+}
+
+
+	if(document.getElementById("password").value != document.getElementById("password2").value)
+	{allow = false;
+		document.getElementById("warning_password").style.display = "block";
+
+
+
+}
+
+
+});
+});
+
+$(function(){
+				$('#login').click(function(e){
+	document.getElementById("warning_mail").style.display = "none";
+				});
+				});
+
+$(function(){
+				$('#login2').click(function(e){
+				document.getElementById("warning_mail").style.display = "none";
+				});
+
+	});
+
+	$(function(){
+					$('#password').click(function(e){
+					document.getElementById("warning_password").style.display = "none";
+					});
+
+		});
+		$(function(){
+						$('#password2').click(function(e){
+						document.getElementById("warning_password").style.display = "none";
+						});
+
+			});
+
+
+
+</script>
+-->
+
+
+
+
+		</div>
+
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<footer>
+	<div class = "footer_main_cont">
+	<div class = "footer_first_con">
+
+	<div class = "footer_contacts">
+
+	<p>тел.:8&nbsp;(999)&nbsp;777&nbsp;-&nbsp;83&nbsp;-&nbsp;00</p>
+	<p>г.&nbspИркутск, ул.&nbspЛермонтова, дом&nbsp3</p>
+	<p>E-mail: qqqq@mail.ru</p>
+	</div>
+
+	<div class = "footer_nav">
+	<nav class = "nav_class">
+
+
+		<a href="{% url 'getTours' %}">Туры</a> <a href="{% url 'getPlaces' %}">Направления</a> <a href="{% url 'getHotels' %}">Проживание</a> <a href="{% url 'transfer' %}">Трансфер</a><a href="{% url 'getArticles' %}">Блог</a><a href="{% url 'getTeam' %}">О&nbspнас</a><a href="{% url 'contacts' %}">Контакты</a>
+
+
+
+
+	</nav>
+	</div>
+
+	<div class = "footer_social">
+
+	<div class = "footer_social_icons">
+	<div class = "icons_h">Мы в соц сетях: </div>
+	<div class = "iconsSoc">
+	<img src="{% static "images/vk.png" %}">
+	<img src="{% static "images/inst.png" %}">
+	<img src="{% static "images/facebook.png" %}">
+	</div>
+	</div>
+	<!--
+	<div class = "footer_logo">
+	<img id="footer_logo" src="http://demiart.ru/forum/uploads7/post-802773-1311062308.png" >
+	</div>
+	-->
+	</div>
+
+
+	</div>
+
+
+
+	<div class = "footer_sec_con">
+	<p>Агентство путешествий Resort </p>
+	</div>
+
+
+
+
+
+	</div>
+
+	</footer>
+	<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script type="text/javascript" src=" {% static 'js/jquery-ui.min.js' %} "></script>
+<link rel="stylesheet" href="   {% static 'jquery-ui.min.css' %} ">
+
+		</body>
+		</html>

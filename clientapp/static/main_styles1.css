@@ -1,0 +1,896 @@
+*, ::after, ::before
+{
+	box-sizing: content-box;
+}
+
+
+
+
+
+
+.page_header {
+background-image: url(1.jpg);
+background-position: top;
+
+height: 650px;
+}
+ul {
+
+align-self:  flex-start;
+list-style: none;
+margin: 0;
+padding-left: 0;
+
+
+height: 50px;
+}
+
+
+
+
+/*********************************
+1. Категории
+*********************************/
+.categories
+{
+display: flex;
+justify-content: center;
+
+
+}
+.categories_cont
+{
+display: flex;
+align-items: center;
+justify-content: center;
+align-self: flex-end;
+flex-wrap: wrap;
+z-index: 100;
+border-radius: 2px;
+width: 100%;
+max-width : 900px;
+box-shadow: 0px 32px 114px rgba(0,0,0,0.35);
+margin-top: -11%;
+background: #FFFFFF;
+
+
+
+img {
+margin-top: 50px;
+display: inline;
+
+}
+}
+
+#cat_place
+{
+	margin-left: 5px;
+}
+.mobilePic
+{
+	display: none;
+
+}
+.mobilePic img
+{
+	width: 100%;
+	height: 400px;
+}
+.category
+{
+margin-top: 10px;
+padding: 35px;
+font-family: 'Open Sans Condensed', sans-serif;
+font-size: 17px;
+font-weight: 400;
+display:flex;
+flex-direction: column;
+justify-content:center;
+align-items:center;
+}
+
+.category a{
+	text-decoration: none;
+}
+
+.cat_icon
+{
+width: 100px;
+height: 90px;
+
+}
+
+.category:hover .cat_title
+{
+color : #6666ff;
+}
+
+
+.cat_icon img
+{
+max-height: 100px;
+max-width: 90px;
+
+
+}
+
+.cat_title
+{
+text-align : center;
+font-family: 'Open Sans Condensed', sans-serif;
+font-size: x-large;
+font-weight: 400;
+color: black;
+
+}
+
+/*********************************
+2. Туры
+*********************************/
+
+.section_title
+{
+text-align : center;
+margin-top: 100px;
+text-align : center;
+font-family: 'Open Sans Condensed', sans-serif;
+font-size: x-large;
+font-weight: 400;
+color: black;
+padding-top: 10px;
+}
+
+
+
+.cont
+{
+display: flex;
+align-items: center;
+justify-content: center;
+align-self: flex-end;
+flex-wrap: wrap;
+margin-left: 100px;
+margin-right: 100px;
+}
+
+.card
+{
+	background: white;
+z-index : 3;
+position: relative;
+width: 100%;
+height: 100%;
+max-width: 350px;
+min-width: 350px;
+height: 630px;
+margin: 30px;
+margin-bottom: 20px;
+
+
+
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.35);
+
+}
+.inner_card
+{
+	display:flex;
+	flex-direction:column;
+	justify-content:flex-start;
+
+}
+
+.card:hover
+{
+box-shadow: 0px 20px 50px rgba(0,0,0,0.35);
+}
+
+.card div:nth-child(1)
+{
+	order :-1;
+}
+.card div:nth-child(2)
+{
+	order :0;
+}
+.card div:nth-child(3)
+{
+	order:1;
+}
+
+
+.tour_img img
+{
+
+width: 350px;
+height: 300px;
+}
+
+.card_text p
+{
+	color:black;
+	margin-top: 0px;
+	margin-bottom:0px;
+}
+
+.card_text .main
+{
+	font-family: 'Didact Gothic', sans-serif;
+	font-size: x-large;
+font-weight: bold;
+	text-align:center;
+	margin-bottom: 3px;
+}
+
+.card_text .card_description
+{
+font-family: 'Didact Gothic', sans-serif;
+padding-left: 10px;
+padding-right: 3px;
+padding-top: 3px;
+	font-size: large;
+	text-align:left;
+	margin-bottom:20px;
+}
+
+
+.card_button
+{
+	background :#fde910;
+	width: 350px;
+	height:40px;
+
+
+	text-align:center;
+	font-size: x-large;
+	font-family: 'Didact Gothic', sans-serif;
+
+}
+
+.card_button a
+{
+	display: block;
+	padding-top: 2px;
+
+	text-decoration: none;
+	color: black;
+
+}
+
+.card_button:hover {
+   background-color: black;
+
+   transition: box-shadow 200ms linear 0ms;
+}
+
+.card_button a:hover
+{
+
+	color: white;
+
+}
+
+.card_info
+{
+
+display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  color: #808080;
+}
+.tour_duration
+{
+	margin-left:2px;
+
+}
+
+.tour_places
+
+{padding-right:2px;
+	display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+.tour_places div
+{
+	margin : 3px;
+	  border: 1px solid #808080;
+	  padding: 1px;
+}
+
+
+
+.more_tours
+{
+margin-top: 50px;
+ padding-bottom: 20px;
+
+
+}
+.more_button
+{
+background-color:white;
+}
+a.more_button {
+  -webkit-transform: translate3D(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  color: black;
+  padding: 14px 24px 12px;
+font-family: 'Didact Gothic', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 900;
+
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display:block;
+  width:200px;
+  margin:20px auto;
+  text-align:center;
+
+
+  color: black
+  border: 1px solid black;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  padding: .5em 2em;
+  outline: none;
+  border: 2px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+
+}
+a.more_button:hover {
+  background: black;
+  color:white;
+
+}
+a.more_button:before {
+  -webkit-transition: all 0s ease-in-out;
+  -moz-transition: all 0s ease-in-out;
+  -o-transition: all 0s ease-in-out;
+  transition: all 0s ease-in-out;
+  content: '';
+  width: 100%;
+  height: 60px;
+  display: block;
+  position: absolute;
+  z-index: -1;
+  border-left: 15px solid white;
+  box-shadow: -20px 30px 30px white;
+  background: transparent;
+  top: 0px;
+  left: -15px;
+  margin-left: -1px;
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+ a.more_button:hover:before, a.boot:active:before, a.boot:focus:before {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  -webkit-transform: translate(115%, 0);
+  -moz-transform: translate(115%, 0);
+  -ms-transform: translate(115%, 0);
+  -o-transform: translate(115%, 0);
+  transform: translate(115%, 0);
+}
+.places
+{
+			background: #e6e6fa;
+}
+
+.place a
+{
+	text-decoration:none;
+	color: gray;
+}
+.place a:hover
+{
+
+	color: black;
+}
+
+
+
+
+
+
+
+
+/*********************************
+3. Направления
+*********************************/
+
+.card_buttons
+{
+	display : flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+}
+
+.card_button_place1
+{
+	background :#fde910;
+	width: 175px;
+	height:70px;
+
+
+	text-align:center;
+	font-size: x-large;
+	font-family: 'Didact Gothic', sans-serif;
+	color: black;
+
+
+}
+
+.card_button_place1 a
+{
+	width: 175px;
+	height:70px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	padding-top:17px;
+
+}
+.card_button_place1 {
+   transition: all 500ms linear 0ms;
+}
+
+
+
+
+.card_button_place2
+{
+	background :white;
+	border: 2px solid #fde910;
+	max-width: 171px;
+	height:66px;
+	align-self: center;
+
+
+
+
+	font-family: 'Didact Gothic', sans-serif;
+
+}
+
+.card_button_place2 a
+{
+	width: 171px;
+	height:70px;
+	display: block;
+	text-decoration: none;
+	text-align:left;
+	padding-left:5px;
+	font-size: 20px;
+	color: black;
+	padding-bottom:0px;
+	padding-top: 17px;
+	padding-right: 2px;
+
+}
+.card_button_place2 {
+   transition: all 100ms linear 0ms;
+}
+.card_button_place2:hover {
+   box-shadow: 0 0 40px 40px #fde910 inset;
+   transition: box-shadow 100ms linear 0ms;
+}
+/*********************************
+3. Отзывы
+*********************************/
+.comments
+{
+		min-width: 300px;
+}
+
+.comments_cont
+{
+	 position: relative;
+	display: flex;
+
+justify-content: space-around;
+
+flex-wrap: wrap;
+
+
+
+
+
+	margin:0 auto;
+	margin-bottom: 70px;
+
+
+	width: 100%;
+	max-width : 1200px;
+
+  box-shadow: 2px 5px 10px rgba(0,0,0,0.35);
+
+}
+..comments_cont:before{
+  content: "";
+  display: block;
+  padding-top: 100%;           /* initial ratio of 1:1*/
+}
+
+.prev_com_button
+{
+	 	display: flex;
+		justify-content: center;
+			align-items: center;
+	  position: absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  width : 40px;
+	background: #f5f5f5;
+	opacity: 0.9;
+}
+
+.prev_com_button img
+{
+	width : 40px;
+	height: 80px;
+
+	opacity: 0.5;
+
+
+}
+.prev_com_button:hover
+{ box-shadow: 0 0 40px 40px #e6e6e6 inset;
+   transition: box-shadow 100ms linear 0ms;
+
+}
+
+
+
+.next_com_button
+{display: flex;
+		justify-content: center;
+			align-items: center;
+	  position: absolute;
+  left:860;
+  right:0;
+  top:0;
+  bottom:0;
+  width : 40px;
+	background: #f5f5f5;
+	opacity: 0.9;
+
+
+
+
+}
+
+.next_com_button img
+{
+
+
+	width : 40px;
+	height: 80px;
+
+	opacity: 0.5;
+
+
+
+}
+.next_com_button:hover
+{ box-shadow: 0 0 40px 40px #e6e6e6 inset;
+   transition: box-shadow 100ms linear 0ms;
+
+
+}
+
+.comm_text
+{
+	display: flex;
+	margin: 0 auto;
+	flex-wrap: wrap;
+
+	width:100%;
+	max-width:850px;
+
+
+
+
+
+
+}
+.comm_text p
+{
+	color: black;
+	font-size: 22px;
+	padding-left: 45px;
+	padding-right: 90px;
+
+}
+.comm_img
+{margin-right: 80px;
+	 margin-left: 80px;
+
+
+
+}
+
+
+.cname
+{
+
+
+	text-align: right;
+	font-size: xx-large;
+}
+
+/*
+.banner
+
+
+{
+	margin-top: 100px;
+	background-image: url(baikal.jpg);
+background-position: top;
+
+height: 500px;
+
+}
+*/
+.comm_img img
+{
+	padding-left:5px;
+	padding-top: 20px;
+	width: 180px;
+	height: 180px;
+
+}
+#cl
+{
+
+	width:300px;
+
+}
+
+/*********************************
+4. Контакты
+*********************************/
+.contacts
+{
+
+
+
+   padding-bottom: 70px;
+width: 100%;
+
+
+}
+
+.contacts_cont
+{
+	margin-top:0px;
+	padding-top:0px;
+
+display: flex;
+justify-content: space-around;
+width: 100%;
+flex-wrap: wrap;
+
+position: relative;
+
+
+}
+.map
+{
+	padding-bottom: 0px;
+width: 100%;
+}
+
+.contact_text img
+{
+
+	width: 50px;
+	height: 50px;
+
+	margin: 10px;
+
+}
+
+.contact_text
+{
+	display: flex;
+	font-size: 25px;
+	flex-direction: column;
+	flex-wrap: wrap;
+font-family: 'Didact Gothic', sans-serif;
+color: black;
+	  align-items: left;
+	  justify-content: space-around;
+	  padding:4px;
+
+}
+
+
+.address
+{
+
+	display: flex;
+ align-items: center;
+
+}
+.email
+{display: flex;
+ align-items: center;
+ margin-left: 4px;
+}
+.phone
+{display: flex;
+ align-items: center;
+  margin-left: 4px;
+
+}
+
+.inst
+{
+	display: flex;
+ align-items: center;
+  padding-left: 4px;
+}
+
+/*********************************
+4. Форма
+*********************************/
+
+.main_form
+{
+	margin: 0 auto;
+	max-width: 800px;
+	width: 100%;
+
+
+	padding-bottom:40px;
+}
+form{
+  margin:0 auto;
+  max-width:95%;
+  box-sizing:border-box;
+  padding:40px;
+  border-radius:5px;
+  background:RGBA(255,255,255,1);
+  -webkit-box-shadow:  0px 0px 15px 0px rgba(0, 0, 0, .45);
+  box-shadow:  0px 0px 15px 0px rgba(0, 0, 0, .45);
+}
+/* Стили полей ввода */
+.textbox{
+  height:50px;
+  width:100%;
+  border-radius:3px;
+  border:rgba(0,0,0,.3) 2px solid;
+  box-sizing:border-box;
+  font-family: 'Open Sans', sans-serif;
+  font-size:18px;
+  padding:10px;
+  margin-bottom:30px;
+}
+.message:focus,
+.textbox:focus{
+  outline:none;
+   border:rgba(24,149,215,1) 2px solid;
+   color:rgba(24,149,215,1);
+}
+/* Стили текстового поля */
+.message{
+    background: rgba(255, 255, 255, 0.4);
+    width:100%;
+    height: 120px;
+    border:rgba(0,0,0,.3) 2px solid;
+    box-sizing:border-box;
+    -moz-border-radius: 3px;
+    font-size:18px;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    display:block;
+    padding:10px;
+    margin-bottom:30px;
+    overflow:hidden;
+}
+
+ input
+{margin-top: 1px;
+margin-bottom: 1px;
+
+}
+
+
+.button {
+  -webkit-transform: translate3D(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  color: black;
+  padding: 14px 24px 12px;
+
+font-family: 'Didact Gothic', sans-serif;
+font-size: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 900;
+background: white;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display:block;
+  width:230px;
+  height: 40px;
+  margin:20px auto;
+  text-align:center;
+
+
+  color: black
+  border: 1px solid black;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  padding: .5em 2em;
+  outline: none;
+  border: 2px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+
+}
+.button:hover {
+  background: black;
+  color:white;
+
+}
+.button:before {
+  -webkit-transition: all 0s ease-in-out;
+  -moz-transition: all 0s ease-in-out;
+  -o-transition: all 0s ease-in-out;
+  transition: all 0s ease-in-out;
+  content: '';
+  width: 100%;
+  height: 60px;
+  display: block;
+  position: absolute;
+  z-index: -1;
+  border-left: 15px solid white;
+  box-shadow: -20px 30px 30px white;
+  background: transparent;
+  top: 0px;
+  left: -15px;
+  margin-left: -1px;
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.button:hover:before, a.boot:active:before, a.boot:focus:before {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  -webkit-transform: translate(115%, 0);
+  -moz-transform: translate(115%, 0);
+  -ms-transform: translate(115%, 0);
+  -o-transform: translate(115%, 0);
+  transform: translate(115%, 0);
+}
+body
+{
+	box-sizing: border-box;
+}

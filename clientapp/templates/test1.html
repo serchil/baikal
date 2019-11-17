@@ -1,0 +1,70 @@
+<html>
+<head>
+
+  </head>
+<body>
+
+  <div id = "1">{{result}}</div>
+  <form id = "newForm" action = "{% url 'test' %}"
+  <button type="submit" id = "submitButton" class="submit btn btn-default" >Тест</button>
+
+</form>
+
+<script>
+
+var parentElem = window.opener.document.getElementById("2");
+parentElem.innerHTML = "it works";
+
+</script>
+
+
+
+
+
+  <script>
+    $(function(){
+    				$('#newForm').submit(function(e){
+
+
+    var form = new FormData(document.getElementById("UserForm"));
+    		//отменяем стандартное действие при отправке формы
+    						e.preventDefault();
+    						var m_method=$(this).attr('method');
+    						var m_action=$(this).attr('action');
+    						var m_data=$(this).serialize();
+
+    						var formData = new FormData(this);
+
+
+    						$.ajax({
+    								type: 'POST',
+    								url: m_action,
+    								data: formData,
+    								contentType: false,
+    								processData: false,
+
+
+
+    								success: function(data){
+
+    console.log(data);
+
+    }
+
+
+
+
+    })
+
+
+    						});
+
+    				});
+
+
+  </script>
+
+</body>
+
+
+</html>

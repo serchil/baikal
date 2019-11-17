@@ -1,0 +1,167 @@
+.edit
+{
+	font-family: 'Didact Gothic', sans-serif;
+
+}
+.section_title 
+{
+text-align : center;
+margin-top: 50px;
+text-align : center;
+font-family: 'Open Sans Condensed', sans-serif;
+font-size: x-large;
+font-weight: 400;
+color: black;
+padding-top: 10px;
+align-self: center;
+}
+.edit
+{
+	margin: 0 auto;
+	margin-top: 40px;
+	width: 70%;
+	height: 100%;
+	background-color: #e6e6fa;
+	color: black;
+		padding-top: 20px;
+
+}
+.edit a 
+{
+	text-decoration: none;
+	color: black;
+}
+
+.tour_slider
+{
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 30px;
+	border: 1px solid black;
+	background-color: #d7d7d7;
+	
+}
+.sld_a
+{margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 20px;
+	
+}
+.program
+
+{	margin: 0 auto;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 30px;
+	border: 1px solid black;
+	background-color: #d7d7d7;
+}
+.general
+{
+	
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 30px;
+	border: 1px solid black;
+	background-color: #d7d7d7;
+		
+		
+}
+.gen_inf
+{margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 20px;
+
+	
+}
+.program p 
+{
+	text-align: center;
+	font-size: 18px;
+}
+.edit .hdr 
+{
+	text-align: center;
+	font-size: 20px;
+}
+.tour_slider .hdr
+{
+	text-align: center;
+	font-size: 20px;
+}
+.day
+{
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 20px;
+	border-top: 1px solid blue;
+
+}
+
+.heading_d input
+{
+	width: 500px;
+}
+.name input
+{
+	width: 500px;
+}
+
+.description input
+{
+	width: 500px;
+	height: 300px;
+}
+
+.desc_d input
+{
+	width: 500px;
+	height: 300px;
+}
+input
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+.edit_form
+{
+	
+	margin-left:10px;
+}
+.control_butts
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+
+.control_butts input
+{
+	align-self: center;
+	margin-top: 30px;
+		margin-left: 30px;
+		width: 200px;
+		height: 30px;
+		font-weight: 900;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

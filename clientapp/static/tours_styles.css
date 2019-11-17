@@ -1,0 +1,539 @@
+
+
+.filter_open
+{
+	display: block !important;
+
+}
+
+.small_filter:hover
+{
+	cursor: pointer;
+}
+
+
+#slider_price
+{
+	width: 200px;
+	color: green;
+	background-color: #3b81c2;
+	margin: 0 auto;
+
+}
+
+
+
+.main_cont
+{
+	display: flex;
+	justify-content: space-around;
+
+}
+
+@media screen and (min-width: 1100px)
+{
+	.small_filter
+	{
+		display: none;}
+}
+
+
+{
+	display: none;
+}
+
+table
+{
+	color: black;
+font-family: 'Didact Gothic', sans-serif;
+margin-bottom: 15px;
+}
+.h
+{padding-left: 14px;
+		text-align:center;
+}
+
+td .checks_block
+{
+	width:250px;
+height:150px;
+background: #fff;
+border: 1px solid #C1C1C1;
+overflow-y: scroll;
+text-align:left;
+padding: 10px;
+
+}
+
+
+
+input
+{
+font-family: 'Didact Gothic', sans-serif;
+}
+.butts
+{
+	margin: 0 auto;
+	padding-left: 20px;
+}
+
+
+.box
+{
+		width: 195px;
+		padding-left: 10px;
+		margin: 3px;
+
+}
+.box1
+{
+	width: 195px;
+		padding-left: 10px;
+		color: black;
+}
+
+.first_table
+{
+	margin-top: 27px;
+	margin-left: 10px;
+
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.35);
+
+}
+
+.filter_butt {
+  -webkit-transform: translate3D(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  color: black;
+  padding: 14px 24px 12px;
+font-family: 'Didact Gothic', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 900;
+
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display:block;
+  width:150px;
+  margin:10px auto;
+  text-align:center;
+
+
+  color: black
+  border: 1px solid black;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  padding: .5em 2em;
+  outline: none;
+  border: 2px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+
+}
+.filter_butt{
+  background: black;
+  color:white;
+
+}
+.filter_butt:hover {
+	background: white;
+	color: black;
+	border: 2px solid black;
+
+}
+.cont
+{
+display: flex;
+align-items: center;
+justify-content: center;
+align-self: flex-start;
+flex-direction: column;
+flex-wrap: wrap;
+margin-left: 100px;
+margin-right: 100px;
+}
+
+.card
+{
+	background: white;
+z-index : 3;
+position: relative;
+width: 100%;
+height: 100%;
+max-width: 900px;
+min-width: 300px;
+min-height: 100px;
+margin: 30px;
+margin-bottom: 20px;
+
+flex-direction:row;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.35);
+
+}
+
+.card:hover
+{
+box-shadow: 0px 20px 50px rgba(0,0,0,0.35);
+}
+
+.card div:nth-child(1)
+{
+	order :-1;
+}
+.card div:nth-child(2)
+{
+	order :0;
+}
+.card div:nth-child(3)
+{
+	order:1;
+}
+
+
+.tour_img img
+{
+padding-left: 10px;
+align-self: center;
+width: 300px;
+height: 250px;
+}
+.card_text
+{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+.card_text p
+{
+	align-self: center;
+	color:black;
+	margin-top: 10px;
+	margin-bottom:0px;
+}
+
+.card_text .main
+{
+	font-family: 'Didact Gothic', sans-serif;
+	font-size: x-large;
+font-weight: bold;
+	text-align:center;
+	margin-bottom: 3px;
+}
+
+.card_text .card_description
+{
+font-family: 'Didact Gothic', sans-serif;
+padding-left: 10px;
+padding-right: 3px;
+padding-top: 3px;
+	font-size: large;
+	text-align:left;
+	margin-bottom:0px;
+}
+
+.date_table
+{
+	margin-left: 10px;
+}
+.days_table
+{
+	margin-left: 10px;
+}
+.place_table
+{
+	margin-left: 10px;
+}
+.cost_table
+{
+	margin-left: 10px;
+}
+.card_button a {
+  -webkit-transform: translate3D(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  color: black;
+  padding: 14px 24px 12px;
+font-family: 'Didact Gothic', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 900;
+
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display:block;
+  width:200px;
+  margin:25px auto;
+  text-align:center;
+
+
+  color: white;
+background: black;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  padding: .5em 2em;
+  outline: none;
+  border: 2px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+
+}
+
+.card_button a:hover{
+	color: black;
+	background-color: white;
+}
+
+
+
+
+
+
+.card_info
+{
+
+display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  color: #808080;
+}
+.tour_duration
+{
+	margin-left:2px;
+
+}
+
+.tour_places
+
+{padding-right:2px;
+	display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+.tour_places div
+{
+	margin : 3px;
+	  border: 1px solid #808080;
+	  padding: 1px;
+}
+.tour_price
+{
+		font-family: 'Didact Gothic', sans-serif;
+	color: black;
+	margin-left: 10px;
+	font-size: 23px;
+	min-width: 150px;
+
+}
+.tour_price span
+{
+	font-family: 'Kaushan Script', cursive;
+	color: red;
+
+	font-weight: 900;
+}
+
+.places
+{
+			background: #e6e6fa;
+}
+
+.place a
+{
+	text-decoration:none;
+	color: gray;
+}
+.place a:hover
+{
+
+	color: black;
+}
+.priceAndButton
+{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+@media screen and (max-width: 1100px) {
+	.main_cont
+	{
+		flex-wrap: wrap;
+	}
+	.cont
+{
+
+margin-left: 10px;
+margin-right: 10px;
+}
+.card
+{
+
+
+margin: 0px;
+margin-bottom: 20px;
+
+
+}
+
+
+
+.priceAndButton
+{
+	flex-wrap: wrap;
+
+}
+
+
+.tour_img img
+{
+margin-left: 2.4em;
+margin-right: 2.4em;
+
+align-self: flex-end;
+
+}
+
+
+
+
+
+
+
+}
+#tabel_1
+{
+	padding-top: 1px;
+}
+
+.filter_click
+{
+	display: block;
+}
+
+@media screen and (max-width: 1100px) {
+.first_table
+{
+	display: none;
+}
+.small_filter img
+{
+	width: 38px;
+	height: 38px;
+}
+.small_filter
+{
+	width: 100%;
+
+}
+.card
+{flex-wrap: wrap;
+	width: 400px;
+	margin-left: 20px;
+	margin-top: 10px;
+	}
+.tour_img img
+{
+	margin-top: 10px;
+}
+
+}
+
+
+.pages
+{
+	color: black;
+	display: flex;
+	justify-content: center;
+
+
+}
+
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 30px;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+ul.pagination li a.active {
+    background-color: #3b81c2;
+    color: white;
+}
+
+ul.pagination li a:hover
+{background-color: #cccccc;
+
+
+}
+
+ #breadcrumbs-one{
+ margin-left: 30px;
+ }
+
+#breadcrumbs-one li
+{
+	list-style: none;
+float:left;
+ padding: 5px;
+}
+
+
+#breadcrumbs-one li a
+{
+	color:black;
+	text-decoration: none;
+
+
+}
+
+#breadcrumbs-one li a:hover
+{
+	font-weight: 900;
+
+}
+#btn1
+{
+		background: #6291A4;
+		color: black;
+
+}
+#btn2
+{
+		background: white;
+		color: black;
+
+}
+#btn2:hover
+{
+			color:white;
+	background-color: black;
+
+}
+#btn1:hover
+{
+	color:white;
+	background-color: black;
+}
+button:hover
+{
+	cursor: pointer;
+}

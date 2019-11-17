@@ -1,0 +1,59 @@
+.forPage
+{
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+#pagination {
+
+    display: inline-block;
+    vertical-align: middle;
+
+    padding: 10px;
+        box-shadow: inset 0 1px 0 0 #FFF, 0 1px 2px #666;
+        align-self: center;
+
+
+}
+#pagination a, #pagination i {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+	height: 22px;
+    text-align: center;
+    font-size: 14px;
+    padding: 3px 0 2px 0;
+	padding-top:3px;
+    -webkit-user-select:none;
+       -moz-user-select:none;
+        -ms-user-select:none;
+         -o-user-select:none;
+            user-select:none;
+}
+
+#pagination a {
+    margin: 0 5px 0 2px;
+
+    border: 1px solid #E3E3E3;
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 0 #FFF, 0 1px 2px #666;
+    text-shadow: 0 1px 1px #FFF;
+
+    background-image: -webkit-linear-gradient(top, #F3F3F3, #D7D7D7);
+    background-image:    -moz-linear-gradient(top, #F3F3F3, #D7D7D7);
+    background-image:     -ms-linear-gradient(top, #F3F3F3, #D7D7D7);
+    background-image:      -o-linear-gradient(top, #F3F3F3, #D7D7D7);
+    background-image:         linear-gradient(top, #F3F3F3, #D7D7D7);
+}
+#pagination i {
+    margin: 0 3px 0 3px;
+}
+#pagination a.current {
+    border: 1px solid #3b81c2;
+    box-shadow: 0 1px 1px #999;
+    background-color: #DFDFDF;
+	font-weight:900;
+    background-image: -webkit-linear-gradient(top, #3b81c2, #3b81c2);
+
+}

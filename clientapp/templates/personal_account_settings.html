@@ -1,0 +1,251 @@
+<!doctype html>
+{% load staticfiles %}
+
+<html>
+	<head>
+		<title>Настройки аккаунта</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}" type="text/css">
+    		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'fixed.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'auth_bar2.css' %}" type="text/css">
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<link rel="stylesheet" href="{% static 'forinput.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'footer.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'normolize.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'account_styles4.css' %}" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+
+
+	</head>
+	<body>
+    <header style = "height: auto;">
+			<nav id = "menu11" class="navbar navbar-expand-lg navbar-dark ">
+				<a class="navbar-brand" href="#" style = "width:170px;">
+					<img src="{% static "images/logotype.png" %}" alt="Logo" style=" height: 80px;">
+				</a>
+				<div  id = "conts" class = "header_contacts " >
+					<div class = "phone1_num">
+						<i class="fa fa-phone" aria-hidden="true"></i>  8&nbsp;(999)&nbsp;777&nbsp;-&nbsp;83&nbsp;-&nbsp;00
+					</div>
+					<div class = "loc" >
+						<i class="fa fa-map-marker" aria-hidden="true" ></i>г.&nbsp;Иркутск,&nbsp;ул.&nbsp;Лермонтова,&nbsp;дом&nbsp;3
+					</div>
+				</div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon navbar-light"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbar1" >
+					<ul class="navbar-nav  ml-auto" style = "font-size: 18px; height: auto;">
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'index' %}">Главная <span class="sr-only">(current)</span></a></li>
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'rest' %}">Отдых&nbsp;на&nbsp;Байкале</a></li>
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'getArticles' %}">Блог</a></li>
+						<li class="nav-item" ><a class="nav-link"  style = "color: white;" href="{% url 'getTeam' %}">О&nbsp;нас</a></li>
+						<li class="nav-item" id = "last" ><a class="nav-link"  style = "color: white;" href="{% url 'contacts' %}">Контакты</a></li>
+            <li class=" auth" >	<a class = "username" href="{% url 'personal_account_show' %}"> {% if user.username %}{{user.username}} </a> |  <a class = "out" href = "{% url 'log_out' %}">Выйти</a>{% else %} <a class= "out" href = "{% url 'go_auth' %}">Вход</a> | <a  class= "out" href = "{% url 'registr' %}">Регистрация</a>{%endif%} {%if user.is_staff == True%}|  <a class= "out" href = "{% url 'bookingsList' %}" > В&nbsp;админку</a>{%endif%}  </li>
+					</ul>
+
+				</div>
+			</nav>
+		</header>
+
+		<div class = "backgr">
+
+
+		Личный кабинет
+	</div>
+
+
+
+
+
+	<nav class = "acc_nav" style="margin-top:23px;">
+	<ul class="acc_menu" >
+							<li class = "part1"><a href="{% url 'personal_account_show' %}">Бронирования</a></li>
+							<li class = "part1"><a href="#">Настройки аккаунта</a></li>
+
+
+						</ul>
+	</nav>
+
+<div class = "main_cont1">
+	<div class="section_title">
+	<hr style = "height: 1 px; width: 300px; background-color:#6666ff">
+		<h2>Настройки</h2>
+		</div>
+
+
+
+
+
+	<div class = "row">	<span class = "label_settings" >Фамилия</span><textarea  name="surname" placeholder="Введите фамилию" id="surname" class="text_settings" required>{{user_info.surname}}</textarea></div>
+	<div class = "row">	<span  class = "label_settings">Имя</span><input value="{{user_info.name}}"  name="name" id="name" placeholder="Введите имя" class="text_settings" required></div>
+	<div class = "row">	<span  class = "label_settings">E-mail</span> <input type="email" class="text_settings" id="email"  name="email" required value="{{user_info.email}}"></div>
+	<div class = "row">	<span  class = "label_settings">Телефон</span>  <input type="tel"  class="text_settings" id="phone_number"  name="phone_number" value="{{user_info.phone_number}}"></div>
+	<div class = "row">	<span  class = "label_settings">Пароль</span><input type="password" id = "password" class="text_settings" maxlength="25" size="40" name="password"></p></div>
+
+		<div class = "row"><input name="submit" onclick="editUserCard()" class="button" id = "ok" type="submit" value="Сохранить изменения" />	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer>
+		<div class = "footer_main_cont">
+		<div class = "footer_first_con">
+
+		<div class = "footer_contacts">
+
+		<p>тел.:8&nbsp;(999)&nbsp;777&nbsp;-&nbsp;83&nbsp;-&nbsp;00</p>
+		<p>г.&nbspИркутск, ул.&nbspЛермонтова, дом&nbsp3</p>
+		<p>E-mail: qqqq@mail.ru</p>
+		</div>
+
+		<div class = "footer_nav">
+		<nav class = "nav_class">
+
+
+		<a href="{% url 'getTours' %}">Туры</a> <a href="{% url 'getPlaces' %}">Направления</a> <a href="{% url 'getHotels' %}">Проживание</a> <a href="{% url 'transfer' %}">Трансфер</a><a href="{% url 'getArticles' %}">Блог</a><a href="{% url 'getTeam' %}">О&nbspнас</a><a href="{% url 'contacts' %}">Контакты</a>
+
+
+		</nav>
+		</div>
+
+		<div class = "footer_social">
+
+		<div class = "footer_social_icons">
+		<div class = "icons_h">Мы в соц сетях: </div>
+		<div class = "iconsSoc">
+			<img src="{% static "images/vk.png" %}">
+			<img src="{% static "images/inst.png" %}">
+			<img src="{% static "images/facebook.png" %}">
+		</div>
+		</div>
+		<!--
+		<div class = "footer_logo">
+		<img id="footer_logo" src="http://demiart.ru/forum/uploads7/post-802773-1311062308.png" >
+		</div>
+		-->
+		</div>
+
+
+		</div>
+
+
+
+		<div class = "footer_sec_con">
+		<p>Агентство путешествий Resort </p>
+		</div>
+
+
+
+
+
+		</div>
+
+		 </footer>
+
+		 <script>
+		 function getCookie(csrfmiddlewaretoken) {
+				 var cookieValue = null;
+				 if (document.cookie && document.cookie !== '') {
+						 var cookies = document.cookie.split(';');
+						 for (var i = 0; i < cookies.length; i++) {
+								 var cookie = jQuery.trim(cookies[i]);
+								 // Does this cookie string begin with the name we want?
+								 if (cookie.substring(0, name.length + 1) === (name + '=')) {
+										 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+										 break;
+								 }
+						 }
+				 }
+				 return cookieValue;
+		 }
+
+ function editUserCard()
+ {
+	 $.ajaxSetup({
+			beforeSend: function(xhr, settings) {
+					function getCookie(name) {
+							var cookieValue = null;
+							if (document.cookie && document.cookie != '') {
+									var cookies = document.cookie.split(';');
+									for (var i = 0; i < cookies.length; i++) {
+											var cookie = jQuery.trim(cookies[i]);
+											// Does this cookie string begin with the name we want?
+											if (cookie.substring(0, name.length + 1) == (name + '=')) {
+													cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+													break;
+											}
+									}
+							}
+							return cookieValue;
+					}
+					if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+							// Only send the token to relative URLs i.e. locally.
+							xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+					}
+			}
+ });
+
+
+ console.log(document.getElementById("name").value);
+ console.log(document.getElementById("surname").value);
+ console.log(document.getElementById("phone_number").value);
+ console.log(document.getElementById("email").value);
+ console.log(document.getElementById("password").value);
+
+
+
+		 $.ajax({
+
+				 type: 'POST',
+				 url: "../editUserCardSelf/"+{{user.id}},
+				 data:{
+					 'csrfmiddlewaretoken': getCookie("csrftoken"),
+
+					 name: document.getElementById("name").value,
+					 surname:	document.getElementById('surname').value,
+					 phone_number: document.getElementById('phone_number').value,
+					 email: document.getElementById('email').value,
+					 password: document.getElementById('password').value,
+				 },
+			 success: function(data){
+window.location = "{% url 'personal_account_show' %}";
+	 },
+	 error: function(){
+		 alert('error');
+	 }
+
+	 })
+
+
+	 }
+</script>
+
+
+
+
+
+
+
+
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+		</body>
+		</html>
