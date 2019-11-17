@@ -1,0 +1,559 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+	<head>
+
+
+		<link rel="stylesheet" href=	"{% static 'bootstrap.css' %}" type="text/css"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="{% static 'header.css' %}" type="text/css">
+
+
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+		<meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport" />
+		<script src="https://vk.com/js/api/openapi.js?160" type="text/javascript"></script>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<title>Туры на Байкал</title>
+		<link rel="stylesheet" href="{% static 'blog_styles.css' %}" type="text/css"/>
+		<link rel="stylesheet" href="{% static 'paginator.css' %}" type="text/css"/>
+				<link rel="stylesheet" href="{% static 'tours_styles.css' %}" type="text/css"/>
+					<link rel="stylesheet" href="{% static 'footer.css' %}" type="text/css"/>
+					<link rel="stylesheet" href="{% static 'normolize.css' %}" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet"/>
+		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet"/>
+		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"/>
+		<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet"/>
+		<link rel="stylesheet" media="screen and (max<header class = "page_header"/>
+
+
+
+
+		<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script type="text/javascript" src=" {% static 'js/jquery-ui.min.js' %} "></script>
+<link rel="stylesheet" href="   {% static 'jquery-ui.min.css' %} ">
+
+
+<script>
+	  $(function(){
+            $('.small_filter').click(function(){
+                $('.first_table').toggleClass('filter_open');
+            });
+        });
+</script>
+
+
+
+
+
+	</head>
+	<body>
+    <style>.fa:hover{cursor: pointer;}</style>
+	<header>
+			<nav id = "menu11" class="navbar navbar-expand-lg navbar-dark " style = "font-family: 'Open Sans Condensed', sans-serif; background-color: rgba(37, 115, 187, 0.9);  height: 100%; z-index: 100;  ">
+				<a class="navbar-brand" href="#" style = "width:170px;">
+			<img src="{% static "images/logotype.png" %}" alt="My image" style=" height: 80px;">
+				</a>
+				<div  id = "conts" class = "header_contacts " >
+					<div class = "phone1_num" style = "display: flex; font-size: 18px; 	color: white; ">
+
+						<i class="fa fa-phone" aria-hidden="true" style = "font-size: 28px; margin-right:5px;"></i>  8&nbsp;(999)&nbsp;777&nbsp;-&nbsp;83&nbsp;-&nbsp;00
+
+					</div>
+					<div class = "loc" style = "color: white; font-size: 18px; margin-left: 10px;">
+
+
+
+
+						<i class="fa fa-map-marker" aria-hidden="true"  style = "font-size: 28px; margin-right:5px;"></i>г.&nbsp;Иркутск,&nbsp;ул.&nbsp;Лермонтова,&nbsp;дом&nbsp;3
+
+
+
+					</div>
+				</div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon navbar-light"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbar1" >
+					<ul class="navbar-nav  ml-auto" style = "font-size: 18px; ">
+					<li class="nav-item " id = "el" ><a class="nav-link"  style = "color: white;" href="#">Главная <span class="sr-only">(current)</span></a></li>
+						<li class="nav-item" id = "el"><a class="nav-link"  style = "color: white;" href="#">Отдых&nbsp;на&nbsp;Байкале</a></li>
+					    <li class="nav-item" id = "el"><a class="nav-link"  style = "color: white;" href="#">Блог</a></li>
+						<li class="nav-item" id = "el"><a class="nav-link"  style = "color: white;" href="#">О&nbsp;нас</a></li>
+						<li class="nav-item" id = "el"><a class="nav-link"  style = "color: white;" href="#">Контакты</a></li>
+						<li class="nav-item" id = "el"><a class="nav-link"  style = "color: white;" href="#">Личный&nbsp;кабинет</a></li>
+
+					</ul>
+
+				</div>
+			</nav>
+		</header>
+	</div>
+
+	<div class = "backgr">
+
+		Туры на Байкал
+
+
+	</div>
+
+
+	<div class = "middle">
+
+	<ul id="breadcrumbs-one">
+		<li><a href="index.html">Главная</a></li>
+		<li class = "arrow">></li>
+		<li><a href="">Туры на Байкал</a></li>
+
+
+	</ul>
+
+	</div>
+
+{{base_url}}ddddddddddd
+
+	<div class = "main_cont">
+	<form action = "{% url 'clientapp:listing' %}" method = "GET">
+
+	<div class = "filter_cont">
+	<div class = "small_filter"><img src="{% static "images/filter.png" %}"></div>
+	<table class = "first_table">
+	<tr><td class = "h">Название</td></tr>
+	<tr><td><table  class = "date_table">
+	<tr><td> </td><td> <input type="text"class = "box" value= "{{filter_name}}" name="name" style = "margin-left:24px;"/></td></tr>
+
+	</table></tr></td>
+	<tr><td class = "h">Даты</td></tr>
+
+	<tr><td><table  class = "date_table">
+	<tr><td>с: </td><td> <input type="date"class = "box" value = "{{filter_date_start}}" name="dateStart"/></td></tr>
+	<tr><td>по: </td><td> <input type="date"class = "box" value = "{{filter_date_end}}"    name="dateEnd"/></td></tr>
+	</table></tr></td>
+
+	<tr><td  colspan="2"  class = "h">Количество дней </td></tr>
+		<tr><td><table  class = "days_table">
+	<tr><td> от: </td><td> <input type="number" name="numStart" value="{{filter_num_start}}" min="1" max="12"  step="1" class = "box" ></td></tr>
+		<tr><td>  до: </td><td> <input type="number" name="numEnd" value="{{filter_num_end}}" min="1" max="12"  step="1" class = "box"></td></tr>
+		</table></tr></td>
+
+	<tr><td  class = "h">Местоположение</td></tr>
+	<tr><td>	<table  class = "place_table">
+	<tr><td > <div class = "checks_block">
+{%for p in place %}
+   <p><input type="checkbox" name="check" value="{{p.name}}"  {% if p.name in filter_places %}  checked {% endif %}> {{p.name}}</p>
+	 {% endfor %}
+
+
+		</div>    </td></tr>
+	</table></tr></td>
+
+	<tr><td colspan="2"  class = "h">Стоимость</td></tr>
+
+	<tr><td><table  class = "cost_table">
+
+
+		<div id='options'>
+	<script>
+
+
+	jQuery(document).ready(function () {
+  $( "#slider_price" ).slider({
+ range: true,
+ min: 1900,
+ max: 20000,
+  step: 200,
+ values: [ start, end ],
+ slide: function( event, ui ) {
+ //Поле минимального значения
+ $( "#price" ).val(ui.values[ 0 ]);
+ //Поле максимального значения
+ $("#price2").val(ui.values[1]); }
+  });
+  //Записываем значения ползунков в момент загрузки страницы
+  //То есть значения по умолчанию
+  $( "#price" ).val($( "#slider_price" ).slider( "values", 0 ));
+  $("#price2").val($("#slider_price").slider( "values", 1 ));
+
+});}
+
+
+
+
+
+</script>
+
+
+
+<tr><td> <table><tr><td><label for='price'>
+ от:
+ <input class = "box1" type="text" name="priceStart" id="price" readonly >
+ </label></td></tr> </td></tr>
+ <tr><td>
+ <label for='price2'>
+до:
+ <input class = "box1" type="text" name="priceEnd"  id="price2"  >
+ </label> </td></tr></table>
+
+
+
+<div id="slider_price"></div>
+
+
+
+		<!--<tr  ><td colspan="2"  class = "h"><input type="checkbox" style = "margin-top: 20px;" name="a" value="Малое море">Отображается</td></tr>-->
+</div></td></tr>
+
+	<tr></tr>
+	</table></tr></td>
+
+
+
+		<tr><td><table  class = "butts_table">
+		<tr><td></td><td class = "butts" > <div class = "filter_buttons"> <button type="submit" class = "filter_butt" id = "btn1">Применить</button> <button  id = "btn2" type="reset" class = "filter_butt">Очистить</button> </div></td><td></td></tr>
+		</table></tr></td>
+		</table>
+	</div>
+ </form>
+
+		<div class = "cont">
+		<!--<div class = "card_button"> <a href = "#" > + Добавить тур  </a></div>-->
+		<h1>{{current_path}}</h1>
+    {% for tour in tours %}
+
+
+
+
+			<div class = "card">
+		<div class = "tour_img"> <img src = "{{tour.preview_img.url}}"></div>
+		<div class = "card_text">
+		<p class = "main">{{tour.name}} </p>
+		<div class = "card_info">
+
+		<div class = "tour_places">
+    {% for place in tour.places.all %}
+		<div class = "place"> <a href = "#"> {{place.name}} </a></div>
+  {% endfor %}
+		</div>
+
+
+		</div>
+		<p class = "card_description">{{tour.description}}<p/>
+		<div class = "priceAndButton">
+		<div class = "tour_price">Цена:&nbsp;<span>{{tour.min_price}}&nbsp;</span> ?</div>
+		<div class = "card_button"> <a href = "{% url 'clientapp:tourCard' tour.id  %}" > Подробнее </a></div>
+		</div>
+		</div>
+
+		</div>
+
+        {% endfor %}
+
+
+
+		<div id="pagination"></div>
+
+
+				</div>
+
+
+
+
+
+
+
+		</div>
+
+
+
+
+
+
+
+</div>
+		<footer>
+		<div class = "footer_main_cont">
+		<div class = "footer_first_con">
+
+		<div class = "footer_contacts">
+
+		<p>тел.:8&nbsp;(999)&nbsp;777&nbsp;-&nbsp;83&nbsp;-&nbsp;00</p>
+		<p>г.&nbspИркутск, ул.&nbspЛермонтова, дом&nbsp3</p>
+		<p>E-mail: qqqq@mail.ru</p>
+		</div>
+
+		<div class = "footer_nav">
+		<nav class = "nav_class">
+
+
+		<a href="#">Туры</a>
+		<a href="#">Направления</a>
+		<a href="#">Проживание</a>
+		<a href="#">Трансфер</a>
+		<a href="#">Блог</a>
+		<a href="#">О&nbspнас</a>
+		<a href="#">Контакты</a>
+
+
+		</nav>
+		</div>
+
+		<div class = "footer_social">
+
+		<div class = "footer_social_icons">
+		<div class = "icons_h">Мы в соц сетях: </div>
+		<div class = "iconsSoc">
+		<img src="{% static "images/vk.png" %}">
+		<img src="{% static "images/inst.png" %}">
+		<img src="{% static "images/facebook.png" %}">
+		</div>
+		</div>
+		<!--
+		<div class = "footer_logo">
+		<img id="footer_logo" src="http://demiart.ru/forum/uploads7/post-802773-1311062308.png" >
+		</div>
+		-->
+		</div>
+
+
+		</div>
+
+
+
+		<div class = "footer_sec_con">
+		<p>Агентство путешествий Resort </p> <p> 2019 год © 2019 Все права защищены.</p>
+		</div>
+
+
+
+
+
+		</div>
+
+		</footer>
+
+
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<script>/* * * * * * * * * * * * * * * * *
+		 * Pagination
+		 * javascript page navigation
+		 * * * * * * * * * * * * * * * * */
+		var qw = "{{base_url}}"
+		var Pagination = {
+
+		    code: '',
+
+		    // --------------------
+		    // Utility
+		    // --------------------
+
+		    // converting initialize data
+		    Extend: function(data) {
+		        data = data || {};
+		        Pagination.size = data.size || 300;
+		        Pagination.page = data.page || 1;
+		        Pagination.step = data.step || 3;
+		    },
+
+		    // add pages by number (from [s] to [f])
+		    Add: function(s, f) {
+		        for (var i = s; i < f; i++) {
+								q = i.toString()
+								console.log("${i}")
+		            Pagination.code += "<a href = '?page="+i+qw+"'>" + i + "</a>";
+
+		        }
+		    },
+
+		    // add last page with separator
+		    Last: function() {
+		        Pagination.code += '<i>...</i><a href = "?page='+Pagination.size+'">' + Pagination.size + '</a>';
+		    },
+
+		    // add first page with separator
+		    First: function() {
+		        Pagination.code += '<a href = "?page=1">1</a><i>...</i>';
+		    },
+
+
+
+		    // --------------------
+		    // Handlers
+		    // --------------------
+
+		    // change page
+		    Click: function() {
+		        Pagination.page = +this.innerHTML;
+		        Pagination.Start();
+
+		    },
+
+		    // previous page
+		    Prev: function() {
+		        Pagination.page--;
+		        if (Pagination.page < 1) {
+		            Pagination.page = 1;
+		        }
+		        Pagination.Start();
+		    },
+
+		    // next page
+		    Next: function() {
+		        Pagination.page++;
+		        if (Pagination.page > Pagination.size) {
+		            Pagination.page = Pagination.size;
+		        }
+		        Pagination.Start();
+		    },
+
+
+
+		    // --------------------
+		    // Script
+		    // --------------------
+
+		    // binding pages
+		    Bind: function() {
+		        var a = Pagination.e.getElementsByTagName('a');
+		        for (var i = 0; i < a.length; i++) {
+		            if (+a[i].innerHTML === Pagination.page) { a[i].className = 'current'; now = i;}
+		            a[i].addEventListener('click', Pagination.Click, false);
+		        }
+		    },
+
+		    // write pagination
+		    Finish: function() {
+		        Pagination.e.innerHTML = Pagination.code;
+		        Pagination.code = '';
+		        Pagination.Bind();
+		    },
+
+		    // find pagination type
+		    Start: function() {
+		        if (Pagination.size < Pagination.step * 2 + 6) {
+		            Pagination.Add(1, Pagination.size + 1);
+		        }
+		        else if (Pagination.page < Pagination.step * 2 + 1) {
+		            Pagination.Add(1, Pagination.step * 2 + 4);
+		            Pagination.Last();
+		        }
+		        else if (Pagination.page > Pagination.size - Pagination.step * 2) {
+		            Pagination.First();
+		            Pagination.Add(Pagination.size - Pagination.step * 2 - 2, Pagination.size + 1);
+		        }
+		        else {
+		            Pagination.First();
+		            Pagination.Add(Pagination.page - Pagination.step, Pagination.page + Pagination.step + 1);
+		            Pagination.Last();
+		        }
+		        Pagination.Finish();
+		    },
+
+
+
+		    // --------------------
+		    // Initialization
+		    // --------------------
+
+		    // binding buttons
+
+		    Buttons: function(e) {
+		        var nav = e.getElementsByTagName('a');
+		        nav[0].addEventListener('click', Pagination.Prev, false);
+		        nav[1].addEventListener('click', Pagination.Next, false);
+		    },
+
+		    // create skeleton
+		    Create: function(e) {
+console.log(Pagination.page);
+var next = Pagination.page+1;
+var back = Pagination.page-1;
+var q = "{{base_url}}"
+if (Pagination.page!= {{ tours.paginator.num_pages }})
+{
+		        var html = [
+       					'<a  href = "?page='+ back+ q+'"> &#9668;</a>',
+								 '<span></span>',  // pagination container
+		            '<a  href = "?page='+ next +q+'">&#9658;</a>',
+
+
+		        ];
+}
+else
+{
+	var html = [
+			'<a  href = "?page='+ back +q+'"> &#9668;</a>',
+			 '<span></span>',  // pagination container
+			  '<a style = "display:none;"></a>',
+
+
+
+	];
+}
+if (Pagination.page== 1)
+{
+
+	var html = [
+	'<a style = "display:none;"></a>',
+			 '<span></span>',  // pagination container
+			'<a  href = "?page='+ next + q+'">&#9658;</a>',
+
+
+	];
+
+
+}
+
+
+
+
+		        e.innerHTML = html.join('');
+		        Pagination.e = e.getElementsByTagName('span')[0];
+		        Pagination.Buttons(e);
+		    },
+
+		    // init
+		    Init: function(e, data) {
+		        Pagination.Extend(data);
+		        Pagination.Create(e);
+		        Pagination.Start();
+		    }
+		};
+
+
+
+		/* * * * * * * * * * * * * * * * *
+		* Initialization
+		* * * * * * * * * * * * * * * * */
+
+		var init = function() {
+		    Pagination.Init(document.getElementById('pagination'), {
+		        size: {{ tours.paginator.num_pages }}, // pages size
+		        page: {{ tours.number }},  // selected page
+
+		        step: 3   // pages before and after current
+		    });	console.log("now is" + now);
+		};
+
+		document.addEventListener('DOMContentLoaded', init, false);
+
+		</script>
+
+
+	</body>
+	</html>

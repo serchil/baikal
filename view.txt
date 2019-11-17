@@ -1,0 +1,273 @@
+from django.shortcuts import render
+from .models import User, Tour, Slider, Day, TourInTimetable, Place, Hotel, Article
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import render_to_response
+from django.http import HttpResponseRedirect, HttpResponse
+from django.urls import reverse
+from datetime import datetime
+
+var a = document.getElementsByClassName('selected-wrapper')[0];
+var b = document.getElementsByClassName('selected-wrapper')[1];
+a.innerHTML  = "<div class='header'>Выбранное</div>";
+b.innerHTML  = "<div class='header'>Выбранное</div>";
+
+def add(request):
+    allTours = Tour.objects.all()
+    maxID = allTours.aggregate(Max('id'))
+    form = TourForm(request.POST, request.FILES)
+    post = form.save(commit=False)
+
+    post.save()
+    for p in form.cleaned_data['places']:
+        p.tour_set.add(post)
+    for s in form.cleaned_data['slider']:
+        s.tour_set.add(post)
+
+    if len(Tour.objects.filter(url = post.url))>1:
+        a = "already exists"
+        return HttpResponse({"respq": a, "form": form})
+
+
+    return HttpResponse(maxID['id__max']+1)
+
+
+
+
+
+
+def forPage(request, listt = []):
+    tours_list = listt
+    paginator = Paginator(tours_list, 3) # Show 25 contacts per page
+
+    page = request.GET.get('page')
+    try:
+        tours = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        tours = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        tours = paginator.page(paginator.num_pages)
+    return tours
+
+
+
+def getTours(request):
+    base_url = ""
+    placess = []
+    tours = []
+    toursResult = Tour.objects.filter(activity_status = True)
+    tour_name = ""
+    date_start = ""
+    date_end = ""
+    num_start = ""
+    num_end = ""
+    price_start = ""
+    price_end = ""
+    if request.method == 'GET':
+        if 'name' in request.GET: tour_name = request.GET.get('name')
+        if 'dateStart' in request.GET: date_start = request.GET.get('dateStart')
+        if 'dateEnd' in request.GET: date_end = request.GET.get('dateEnd')
+        if 'numStart' in request.GET: num_start = request.GET.get('numStart')
+        if 'numEnd' in request.GET: num_end = request.GET.get('numEnd')
+        if 'priceStart' in request.GET: price_start = request.GET.get('priceStart')
+        if 'priceEnd' in request.GET: price_end = request.GET.get('priceEnd')
+        if 'check' in request.GET: placess = request.GET.getlist('check')
+
+        if len(placess)>0:
+            newList = []
+
+            for p in placess:
+                base_url+="&check="+p
+
+            for t in toursResult:
+                    for p in t.places.all():
+                        for pl in placess:
+                            if p.name == pl and t not in newList : newList.append(t)
+            toursResult = newList
+
+        if tour_name!= "":
+            base_url +="&name="+tour_name
+            newList = []
+            for result in toursResult:
+                if result.name == tour_name and result not in newList: newList.append(result)
+            toursResult = newList
+
+        if date_start!="" and date_end == "":
+            base_url += "&dateStart="+date_start
+            listOfTours = []
+            newList = []
+
+            timetable = TourInTimetable.objects.filter(date__range=[date_start, "3000-01-31"])
+            for tour in timetable:
+                listOfTours.append(tour.tourID)
+
+            for tour in toursResult:
+                for tour2 in listOfTours:
+                    if tour == tour2 and tour not in newList: newList.append(tour)
+            toursResult = newList
+
+        if date_start == "" and date_end != "":
+            listOfTours = []
+            newList = []
+            base_url += "&dateEnd="+date_end
+            timetable = TourInTimetable.objects.filter(date__range=["0001-01-01", date_end])
+            for tour in timetable:
+                listOfTours.append(tour.tourID)
+
+            for tour in toursResult:
+                for tour2 in listOfTours:
+                    if tour == tour2 and tour not in newList: newList.append(tour)
+            toursResult = newList
+
+        if date_start != "" and date_end != "":
+            listOfTours = []
+            newList = []
+            base_url += "&dateStart="+date_start+"&dateEnd="+date_end
+            timetable = TourInTimetable.objects.filter(date__range=[date_start, date_end])
+            for tour in timetable:
+                listOfTours.append(tour.tourID)
+
+            for tour in toursResult:
+                for tour2 in listOfTours:
+                    if tour == tour2 and tour not in newList: newList.append(tour)
+            toursResult = newList
+
+        if num_start!="":
+            base_url +="&numStart="+num_start
+            newList = []
+            for result in toursResult:
+                if result.number_of_days >= int(num_start) and result not in newList: newList.append(result)
+            toursResult = newList
+
+        if num_end!="":
+            base_url +="&numStart="+num_end
+            newList = []
+            for result in toursResult:
+                if result.number_of_days <= int(num_end) and result not in newList: newList.append(result)
+            toursResult = newList
+
+        if price_start!="":
+            base_url +="&priceStart="+price_start
+            newList = []
+            for result in toursResult:
+                if result.min_price >= int(price_start) and result not in newList: newList.append(result)
+            toursResult = newList
+
+        if price_end!="":
+            base_url +="&priceEnd="+price_end
+            newList = []
+            for result in toursResult:
+                if result.min_price <= int(price_end) and result not in newList: newList.append(result)
+            toursResult = newList
+
+
+    tours = forPage(request, toursResult)
+    place = Place.objects.filter(activity_status = True)
+    return render_to_response('tours.html', {"tours": tours, "base_url": base_url, "filter_name":tour_name,"filter_date_start": date_start, "filter_date_end": date_end, "filter_num_start": num_start, "filter_num_end":num_end, "filter_places":placess, "place":place, "filter_price_start":price_start, "filter_price_end": price_end})
+
+def tourCard(request, tour_id):
+    tour = Tour.objects.filter(id = tour_id)[0]
+    day = Day.objects.filter(tourID = tour)
+    tourInT = TourInTimetable.objects.filter(tourID = tour)
+
+    dates = []
+    for t in TourInTimetable.objects.filter(tourID = tour):
+        d = t.date.strftime("%B")
+        if (d == "January"): d = "января"
+        if (d == "February"): d = "февраля"
+        if (d == "March"): d = "марта"
+        if (d == "April"): d = "апреля"
+        if (d == "May"): d = "мая"
+        if (d == "June"): d = "июня"
+        if (d == "July"): d = "июля"
+        if (d == "August"): d = "августа"
+        if (d == "September"): d = "сентября"
+        if (d == "October"): d = "октября"
+        if (d == "November"): d = "ноября"
+        if (d == "December"): d = "декабря"
+        result = {"day": str(t.date.day), "month": str(d)}
+
+        dates.append(result)
+    return render_to_response('tour_card.html', {"tour":tour, "day": day, "dates": dates})
+
+
+def getPlaces(request):
+    pAll = Place.objects.filter(activity_status = True)
+    places = forPage(request, pAll)
+    return render_to_response('places.html', {"places":places})
+
+def placeCard(request, place_id):
+    idd = place_id
+    placee = Place.objects.filter(id = place_id, activity_status = True)[0]
+    tours = Tour.objects.filter(places = placee, activity_status = True)[:6]
+    hotels = Hotel.objects.filter(place_id = idd, activity_status = True)
+    return render_to_response('place_card.html', {"place":placee, "tours": tours, "hotels":hotels})
+
+def index(request):
+    tours = Tour.objects.filter(show_on_main_status = True, activity_status = True)
+    places = Place.objects.filter(show_on_main_status = True, activity_status = True)
+    sliders = Slider.objects.filter(show_on_main_status = True)
+    return render_to_response('index.html', {"tours":tours, "places":places, "sliders": sliders})
+
+def getHotels(request):
+    places = Place.objects.filter(activity_status = True)
+    hotelsResult = Hotel.objects.filter(activity_status = True)
+
+    base_url = ""
+    placess = []
+    hotel_name = ""
+    price_start = ""
+    price_end = ""
+
+    if request.method == 'GET':
+        if 'name' in request.GET: hotel_name = request.GET.get('name')
+        if 'priceStart' in request.GET: price_start = request.GET.get('priceStart')
+        if 'priceEnd' in request.GET: price_end = request.GET.get('priceEnd')
+        if 'check' in request.GET: placess = request.GET.getlist('check')
+
+        if len(placess)>0:
+            newList = []
+            for p in placess:
+                base_url+="&check="+p
+
+            for t in hotelsResult:
+                        for pl in placess:
+                            if t.place.name == pl and t not in newList : newList.append(t)
+            hotelsResult = newList
+
+        if hotel_name!= "":
+            base_url +="&name="+hotel_name
+            newList = []
+            for result in hotelsResult:
+                if result.name == hotel_name and result not in newList: newList.append(result)
+            hotelsResult = newList
+
+        if price_start!="":
+            base_url +="&priceStart="+price_start
+            newList = []
+            for result in hotelsResult:
+                if result.min_price >= int(price_start) and result not in newList: newList.append(result)
+            hotelsResult = newList
+
+        if price_end!="":
+            base_url +="&priceEnd="+price_end
+            newList = []
+            for result in hotelsResult:
+                if result.min_price <= int(price_end) and result not in newList: newList.append(result)
+            hotelsResult = newList
+
+
+    hotels = forPage(request, hotelsResult)
+    return render_to_response('hotels.html', {"hotels": hotels, "places": places, "base_url": base_url, "filter_name":hotel_name,"filter_places":placess, "filter_price_start":price_start, "filter_price_end": price_end})
+
+
+def hotelCard(request, hotel_id):
+    hotel = Hotel.objects.filter(id = hotel_id)[0]
+    return render_to_response('hotel_card.html',  {"hotel": hotel })
+
+
+def articleCard(request, article_id):
+
+    article = Article.objects.filter(id = article_id, activity_status = True)[0]
+    return render_to_response('article_card.html',  {"article": article })
